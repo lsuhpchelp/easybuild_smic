@@ -1,0 +1,18 @@
+name = 'GSL'
+version = '1.16'
+author = 'shaohao'
+requested_by = 'essential'
+
+homepage = 'http://www.gnu.org/software/gsl/'
+downloadpage = 'http://mirror.nexcess.net/gnu/gsl/'
+description = """The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers.
+ The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. This version is installed with intel compiler."""
+
+toolchain = {'name': 'intelcomp', 'version': '14.0.2'}
+#toolchainopts = {'opt': True, 'optarch': True, 'unroll': True, 'pic': True}
+
+source_urls = [downloadpage]
+sources = [SOURCELOWER_TAR_GZ]
+
+#configopts = "--with-pic"
+

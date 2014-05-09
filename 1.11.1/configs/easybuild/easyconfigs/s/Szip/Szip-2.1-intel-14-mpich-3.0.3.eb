@@ -1,0 +1,22 @@
+name = 'Szip'
+version = '2.1'
+author = 'lyan1'
+requested_by = 'prereq of HDF5'
+
+homepage = 'http://www.hdfgroup.org/doc_resource/SZIP/'
+description = "Szip compression software, providing lossless compression of scientific data"
+
+toolchain = {'name': 'intel-14-mpich', 'version': '3.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+source_urls = ['http://www.hdfgroup.org/ftp/lib-external/szip/%(version)s/src']
+sources = [SOURCELOWER_TAR_GZ]
+
+configopts = "--with-pic"
+
+sanity_check_paths = {
+    'files': ["lib/libsz.a", "lib/libsz.so"] +
+             ["include/%s" % x for x in ["ricehdf.h", "szip_adpt.h", "szlib.h"]],
+    'dirs': [],
+}
+

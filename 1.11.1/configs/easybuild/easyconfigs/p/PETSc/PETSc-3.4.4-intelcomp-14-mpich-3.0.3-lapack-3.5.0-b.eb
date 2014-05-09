@@ -1,0 +1,35 @@
+name = "PETSc"
+version = "3.4.4"
+author = "shaohao"
+requested_by = "essential"
+
+#versionsuffix = '-Python-2.6.6'
+
+homepage = 'http://www.mcs.anl.gov/petsc'
+description = """PETSc, pronounced PET-see (the S is silent), is a suite of data structures and routines for the scalable (parallel) solution of scientific applications modeled by partial differential equations."""
+
+
+toolchain = {'name': 'intel-14-mpich', 'version': '3.0.3'}
+#toolchainopts = {'usempi': True, 'pic': True}
+
+source_urls = ['http://ftp.mcs.anl.gov/pub/petsc/release-snapshots']
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [
+                ('LAPACK', '3.5.0')
+#               ('Boost', '1.49.0', versionsuffix),
+#               ('FIAT', '1.0.0', versionsuffix),
+#               ('METIS', '5.0.2'),
+#               ('ParMETIS', '4.0.2'),
+#               ('ScientificPython', '2.8', versionsuffix),
+#               ('SCOTCH', '5.1.12b_esmumps'),
+#               ('SuiteSparse', '3.7.0', '-withparmetis'),  # for CHOLMOD, UMFPACK
+#               ('Hypre', '2.8.0b'),
+               ]
+
+patches = [
+           'fix.patch',  # ignore failed ranlib check on use of '-c' argument
+           'PETSc_no-BLACS.patch'
+          ]
+
+#moduleclass = 'numlib'
