@@ -8,8 +8,7 @@ requested_by = "essential"
 homepage = 'http://www.mcs.anl.gov/petsc'
 description = """PETSc, pronounced PET-see (the S is silent), is a suite of data structures and routines for the scalable (parallel) solution of scientific applications modeled by partial differential equations."""
 
-
-toolchain = {'name': 'intel-14-mpich', 'version': '3.0.3'}
+toolchain = {'name': 'gcc-4-mpich2', 'version': '3.0.4'}
 #toolchainopts = {'usempi': True, 'pic': True}
 
 source_urls = ['http://ftp.mcs.anl.gov/pub/petsc/release-snapshots']
@@ -17,13 +16,14 @@ sources = [SOURCELOWER_TAR_GZ]
 
 #configopts = "--with-mpi-dir=/usr/local/packages/MPICH/3.0.3-intelcomp-14.0.2 --with-lapack-lib=/usr/local/packages/LAPACK/3.4.2-intel-14-mpich-3.0.3/lib/liblapack.a --with-blas-lib=/usr/local/packages/OpenBLAS/0.2.6-intel-14-mpich-3.0.3-LAPACK-3.4.2/lib/libopenblas.a"
 
-builddependencies = [
-                     ('LAPACK', '3.5.0'),
-                    ]
+#builddependencies = [
+#                     ('LAPACK', '3.4.2'),
+#                     ('OpenBLAS', '0.2.6', '-LAPACK-3.4.2'),
+#                    ]
 
-#dependencies = [
-#                ('LAPACK', '3.4.2'),
-#                ('OpenBLAS', '0.2.6', '-LAPACK-3.4.2')
+dependencies = [
+                ('LAPACK', '3.4.2'),
+                ('OpenBLAS', '0.2.6', '-LAPACK-3.4.2')
 #                ('LAPACK', '3.5.0')
 #               ('Boost', '1.49.0', versionsuffix),
 #               ('FIAT', '1.0.0', versionsuffix),
@@ -33,11 +33,11 @@ builddependencies = [
 #               ('SCOTCH', '5.1.12b_esmumps'),
 #               ('SuiteSparse', '3.7.0', '-withparmetis'),  # for CHOLMOD, UMFPACK
 #               ('Hypre', '2.8.0b'),
-#               ]
+               ]
 
 #patches = [
 #           'fix.patch',  # ignore failed ranlib check on use of '-c' argument
 #           'PETSc_no-BLACS.patch'
 #          ]
 
-#moduleclass = 'numlib'
+moduleclass = 'numlib'

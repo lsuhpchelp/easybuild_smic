@@ -1,0 +1,5 @@
+rsync -avh /usr/local/packages/easybuild/1.11.1/configs/ ./configs/
+rsync -avh /usr/local/packages/easybuild/1.11.1/lib/python2.6/site-packages/easybuild_easyblocks-1.11.1-py2.6.egg/easybuild/easyblocks/ ./easyblock/easyblocks/
+rsync -avh /usr/local/packages/easybuild/1.11.1/lib/python2.6/site-packages/easybuild_framework-1.11.1-py2.6.egg/easybuild/ ./easybuild/
+rsync -avh /usr/local/packages/easybuild/1.11.1/etc/ ./etc/
+git add .

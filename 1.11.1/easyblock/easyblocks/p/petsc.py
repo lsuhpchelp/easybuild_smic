@@ -152,6 +152,7 @@ class EB_PETSc(ConfigureMake):
             print bl_libdir, bl_libs
             if bl_libdir and bl_libs:
                 self.cfg.update('configopts', '--with-blas-lapack-lib=[%s/%s]' % (bl_libdir, bl_libs))
+
             else:
                     self.log.error("One or more environment variables for BLAS/LAPACK not defined?")
 

@@ -1,0 +1,22 @@
+easyblock = "Toolchain"
+
+name = 'gcc-4-mpich2'
+version = '3.0.4'
+author = 'shaohao'
+requested_by = 'essential'
+
+homepage = 'http://software.intel.com/en-us/intel-cluster-toolkit-compiler/'
+description = """GNU Compiler provides C/C++ and Fortran compilers and MPICH2."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+compver = '4.8.2'
+comp = ('GCC',compver)
+mpi = 'MPICH2'
+mpiver = '3.0.4'
+
+dependencies = [
+    ('GCC', compver),
+    (mpi, mpiver, '', comp),
+]
+
