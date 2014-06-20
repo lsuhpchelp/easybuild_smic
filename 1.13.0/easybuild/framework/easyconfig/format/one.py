@@ -52,7 +52,7 @@ class FormatOneZero(EasyConfigFormatConfigObj):
     USABLE = True  # TODO: disable it at some point, too insecure
 
     PYHEADER_ALLOWED_BUILTINS = None  # allow all
-    PYHEADER_MANDATORY = ['version', 'name', 'toolchain', 'homepage', 'description']
+    PYHEADER_MANDATORY = ['version', 'name', 'toolchain', 'homepage', 'description', 'author', 'requested_by']
     PYHEADER_BLACKLIST = []
 
     def validate(self):

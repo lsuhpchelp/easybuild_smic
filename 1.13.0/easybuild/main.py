@@ -124,11 +124,11 @@ def main(testing_data=(None, None, None)):
     init_session_state = session_state()
 
     # disallow running EasyBuild as root
-    if os.getuid() == 0:
-        sys.stderr.write("ERROR: You seem to be running EasyBuild with root privileges.\n"
-                         "That's not wise, so let's end this here.\n"
-                         "Exiting.\n")
-        sys.exit(1)
+    #if os.getuid() == 0:
+    #    sys.stderr.write("ERROR: You seem to be running EasyBuild with root privileges.\n"
+    #                     "That's not wise, so let's end this here.\n"
+    #                     "Exiting.\n")
+    #    sys.exit(1)
 
     # steer behavior when testing main
     testing = testing_data[0] is not None

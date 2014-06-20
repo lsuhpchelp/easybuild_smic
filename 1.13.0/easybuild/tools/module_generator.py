@@ -51,7 +51,8 @@ from easybuild.tools.utilities import import_available_modules, quote_str
 _log = fancylogger.getLogger('module_generator', fname=False)
 
 # general module class
-GENERAL_CLASS = 'all'
+#GENERAL_CLASS = 'all'
+GENERAL_CLASS = ''
 
 # suffix for devel module filename
 DEVEL_MODULE_SUFFIX = '-easybuild-devel'
@@ -86,20 +87,21 @@ class ModuleGenerator(object):
         classPathFile = os.path.join(module_path, self.app.cfg['moduleclass'], det_full_module_name(self.app.cfg))
 
         # Create directories and links
-        for path in [os.path.dirname(x) for x in [self.filename, classPathFile]]:
+#        for path in [os.path.dirname(x) for x in [self.filename, classPathFile]]:
+	for path in [os.path.dirname(x) for x in [self.filename]
             mkdir(path, parents=True)
 
         # Make a symlink from classpathFile to self.filename
-        try:
-            # remove symlink if its there (even if it's broken)
-            if os.path.lexists(classPathFile):
-                os.remove(classPathFile)
-            # remove module file if it's there (it'll be recreated), see Application.make_module
-            if os.path.exists(self.filename):
-                os.remove(self.filename)
-            os.symlink(self.filename, classPathFile)
-        except OSError, err:
-            _log.exception("Failed to create symlink from %s to %s: %s" % (classPathFile, self.filename, err))
+#        try:
+#            # remove symlink if its there (even if it's broken)
+#            if os.path.lexists(classPathFile):
+#                os.remove(classPathFile)
+#            # remove module file if it's there (it'll be recreated), see Application.make_module
+#            if os.path.exists(self.filename):
+#                os.remove(self.filename)
+#            os.symlink(self.filename, classPathFile)
+#        except OSError, err:
+#            _log.exception("Failed to create symlink from %s to %s: %s" % (classPathFile, self.filename, err))
 
         return os.path.join(module_path, GENERAL_CLASS)
 
