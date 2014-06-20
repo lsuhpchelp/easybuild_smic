@@ -19,8 +19,8 @@
 #logtostdout=
 # Only build listed blocks (type comma-separated list)
 #only-blocks=
-# Path(s) to search for easyconfigs for missing dependencies (colon-separated) (def /usr/local/packages/easybuild/1.11.1/lib/python2.6/site-packages/easybuild_easyconfigs-1.11.1.0-py2.6.egg/easybuild/easyconfigs)
-robot=/usr/local/packages/easybuild/1.11.1/configs
+# Path(s) to search for easyconfigs for missing dependencies (colon-separated) (def /usr/local/packages/easybuild/1.13.0/lib/python2.6/site-packages/easybuild_easyconfigs-1.13.0-py2.6.egg/easybuild/easyconfigs)
+robot=/usr/local/packages/easybuild/1.13.0/configs
 # Skip existing software (useful for installing additional packages) (def False)
 #skip=
 # Stop the installation after certain step (type choice; def source) (choices: fetch, ready, source, patch, prepare, configure, build, test, install, extensions, package, postproc, sanitycheck, cleanup, module, testcases)
@@ -37,7 +37,7 @@ robot=/usr/local/packages/easybuild/1.11.1/configs
 #avail-repositories=
 # Temporary build path (def /root/.local/easybuild/build)
 buildpath=/usr/local/packages/sources/eb_packages/build
-# Path to EasyBuild config file (def /home/packages/easybuild/1.11.1/lib/python2.6/site-packages/easybuild_framework-1.11.1-py2.6.egg/easybuild/easybuild_config.py)
+# Path to EasyBuild config file (def /home/packages/easybuild/1.13.0/lib/python2.6/site-packages/easybuild_framework-1.13.0-py2.6.egg/easybuild/easybuild_config.py)
 #config=
 # Directory names to ignore when searching for files/dirs (type comma-separated list; def .git,.svn)
 #ignore-dirs=
@@ -46,7 +46,7 @@ installpath=/usr/local/packages
 # Directory name and format of the log file (type comma-separated list; def easybuild,easybuild-%(name)s-%(version)s-%(date)s.%(time)s.log)
 #logfile-format=
 # Module naming scheme (type choice; def EasyBuildModuleNamingScheme) (choices: EasyBuildModuleNamingScheme)
-#module-naming-scheme=
+module-naming-scheme=SuperMicModuleNamingScheme
 # Extend supported module classes (For more info on the default classes, use --show-default-moduleclasses) (type comma-separated list; def base,bio,cae,chem,compiler,data,debugger,devel,geo,ide,lang,lib,math,mpi,numlib,perf,phys,system,toolchain,tools,vis)
 #moduleclasses=
 # Path to file containing footer to be added to all generated module files
@@ -66,7 +66,7 @@ repositorypath=/usr/local/packages/sources/eb_packages/ebfiles_repo
 # Path(s) to where sources should be downloaded (string, colon-separated) (def /root/.local/easybuild/sources)
 sourcepath=/usr/local/packages/sources/eb_packages/sources
 # Installpath subdir for modules (def modules)
-subdir-modules=Modules/modulefiles
+subdir-modules=Modules/modulefiles/apps
 # Installpath subdir for software (def software)
 subdir-software=.
 # Path to where a job should place the output (to be set within jobscript)
@@ -132,7 +132,7 @@ skip-test-cases=True
 # Search and build software with version
 #software-version=
 # Search and build with toolchain (name and version) (type comma-separated list)
-toolchain=intel-14-mpich,3.0.3
+toolchain=INTEL,14.0.2
 # Search and build with toolchain name
 #toolchain-name=
 # Search and build with toolchain version
