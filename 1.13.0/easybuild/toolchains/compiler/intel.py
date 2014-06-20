@@ -38,7 +38,7 @@ from easybuild.tools.toolchain.compiler import Compiler
 TC_CONSTANT_INTELCOMP = "Intel"
 
 
-class IntelIccIfort(Compiler):
+class Intel(Compiler):
     """Intel compiler class
         - TODO: install as single package ?
             should be done anyway (all icc versions come with matching ifort version)
@@ -92,28 +92,24 @@ class IntelIccIfort(Compiler):
         """Intel compilers-specific adjustments after setting compiler variables."""
         super(IntelIccIfort, self)._set_compiler_vars()
 
-	if not ('intel' in self.COMPILER_MODULE_NAME):
+        if not ('intel' in self.COMPILER_MODULE_NAME):
             self.log.raiseException("_set_compiler_vars: missing icc and/or ifort from COMPILER_MODULE_NAME %s" % self.COMPILER_MODULE_NAME)
 
-#        icc_root, _ = self.get_software_root(self.COMPILER_MODULE_NAME)
-#        icc_version, ifort_version = self.get_software_version(self.COMPILER_MODULE_NAME)
+        icc_root, _ = self.get_software_root(self.COMPILER_MODULE_NAME)
+        icc_version, ifort_version = self.get_software_version(self.COMPILER_MODULE_NAME)
 
-#        if not ifort_version == icc_version:
-#            msg = "_set_compiler_vars: mismatch between icc version %s and ifort version %s"
-#            self.log.raiseException(msg % (icc_version, ifort_version))
+        if not ifort_version == icc_version:
+            msg = "_set_compiler_vars: mismatch between icc version %s and ifort version %s"
+            self.log.raiseException(msg % (icc_version, ifort_version))
 
-#        if LooseVersion(icc_version) < LooseVersion('2011'):
-#            self.LIB_MULTITHREAD.insert(1, "guide")
+        if LooseVersion(icc_version) < LooseVersion('2011'):
+            self.LIB_MULTITHREAD.insert(1, "guide")
 
-#        libpaths = ['intel64']
-#        if self.options.get('32bit', None):
-#            libpaths.append('ia32')
-#        libpaths = ['lib/%s' % x for x in libpaths]
-#        if LooseVersion(icc_version) > LooseVersion('2011.4') and LooseVersion(icc_version) < LooseVersion('2013_sp1'):
-#            libpaths = ['compiler/%s' % x for x in libpaths]
+        libpaths = ['intel64']
+        if self.options.get('32bit', None):
+            libpaths.append('ia32')
+        libpaths = ['lib/%s' % x for x in libpaths]
+        if LooseVersion(icc_version) > LooseVersion('2011.4') and LooseVersion(icc_version) < LooseVersion('2013_sp1'):
+            libpaths = ['compiler/%s' % x for x in libpaths]
 
-#        self.variables.append_subdirs("LDFLAGS", icc_root, subdirs=libpaths)
-
-	#Add the MKL flag - not a clean solution
-	#TODO: should find a cleaner solution (rewrite the linalg/intelmkl.py)
-	self.variables.nextend("LDFLAGS","-mkl")
+        self.variables.append_subdirs("LDFLAGS", icc_root, subdirs=libpaths)

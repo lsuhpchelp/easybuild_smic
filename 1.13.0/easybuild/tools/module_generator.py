@@ -88,7 +88,7 @@ class ModuleGenerator(object):
 
         # Create directories and links
 #        for path in [os.path.dirname(x) for x in [self.filename, classPathFile]]:
-	for path in [os.path.dirname(x) for x in [self.filename]
+	for path in [os.path.dirname(x) for x in [self.filename]]:
             mkdir(path, parents=True)
 
         # Make a symlink from classpathFile to self.filename

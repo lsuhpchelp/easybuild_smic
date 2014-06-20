@@ -40,7 +40,8 @@ class IntelMKL(LinAlg):
     """Support for Intel MKL."""
 
     # library settings are inspired by http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor
-    BLAS_MODULE_NAME = ['imkl']
+#    BLAS_MODULE_NAME = ['imkl']
+    BLAS_MODULE_NAME = ['intel']
     BLAS_LIB_MAP = {
         "lp64": '_lp64',
         "interface": None,
@@ -51,16 +52,19 @@ class IntelMKL(LinAlg):
     BLAS_LIB_GROUP = True
     BLAS_LIB_STATIC = True
 
-    LAPACK_MODULE_NAME = ['imkl']
+#    LAPACK_MODULE_NAME = ['imkl']
+    LAPACK_MODULE_NAME = ['intel']
     LAPACK_IS_BLAS = True
 
-    BLACS_MODULE_NAME = ['imkl']
+#    BLACS_MODULE_NAME = ['imkl']
+    BLACS_MODULE_NAME = ['intel']
     BLACS_LIB = ["mkl_blacs%(mpi)s%(lp64)s"]
     BLACS_LIB_MAP = {'mpi':None}
     BLACS_LIB_GROUP = True
     BLACS_LIB_STATIC = True
 
-    SCALAPACK_MODULE_NAME = ['imkl']
+#    SCALAPACK_MODULE_NAME = ['imkl']
+    SCALAPACK_MODULE_NAME = ['intel']
     SCALAPACK_LIB = ["mkl_scalapack%(lp64_sc)s"]
     SCALAPACK_LIB_MT = ["mkl_scalapack%(lp64_sc)s"]
     SCALAPACK_LIB_MAP = {"lp64_sc":"_lp64"}
