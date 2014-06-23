@@ -79,6 +79,7 @@ class IntelIccIfort(Compiler):
 
     COMPILER_F77 = 'ifort'
     COMPILER_F90 = 'ifort'
+    COMPILER_FC = 'ifort'
     COMPILER_F_UNIQUE_FLAGS = ['intel-static']
 
     LINKER_TOGGLE_STATIC_DYNAMIC = {
@@ -116,7 +117,8 @@ class IntelIccIfort(Compiler):
 
 	#Add the MKL flag - not a clean solution
 	#TODO: should find a cleaner solution (rewrite the linalg/intelmkl.py)
-	self.variables.nappend("CFLAGS","-mkl")
-	self.variables.nappend("CXXFLAGS","-mkl")
-	self.variables.nappend("FCFLAGS","-mkl")	
-	self.variables.nappend("F90FLAGS","-mkl")
+	self.variables.nappend("CFLAGS","mkl")
+	self.variables.nappend("CXXFLAGS","mkl")
+	self.variables.nappend("FCFLAGS","mkl")	
+	self.variables.nappend("F90FLAGS","mkl")
+	self.variables.nappend("FCFLAGS","mkl")

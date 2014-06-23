@@ -109,6 +109,7 @@ class Compiler(Toolchain):
 
     COMPILER_F77 = None
     COMPILER_F90 = None
+    COMPILER_FC = None
     COMPILER_F_FLAGS = ['i8', 'r8']
     COMPILER_F_UNIQUE_FLAGS = []
 
@@ -255,6 +256,10 @@ class Compiler(Toolchain):
         self.variables.nappend('F90FLAGS', flags)
         self.variables.nappend('F90FLAGS', fflags)
         self.variables.join('F90FLAGS', 'OPTFLAGS', 'PRECFLAGS')
+
+	self.variables.nappend('FCFLAGS', flags)
+        self.variables.nappend('FCFLAGS', fflags)
+        self.variables.join('FCFLAGS', 'OPTFLAGS', 'PRECFLAGS')
 
     def _get_optimal_architecture(self):
         """ Get options for the current architecture """
