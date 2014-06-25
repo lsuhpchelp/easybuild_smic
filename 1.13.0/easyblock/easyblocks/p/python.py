@@ -47,7 +47,7 @@ from easybuild.tools.modules import get_software_libdir, get_software_root
 EXTS_FILTER_PYTHON_PACKAGES = ('python -c "import %(ext_name)s"', "")
 
 
-class EB_Python(ConfigureMake):
+class EB_python(ConfigureMake):
     """Support for building/installing Python
     - default configure/build_step/make install works fine
 
@@ -96,11 +96,11 @@ class EB_Python(ConfigureMake):
                 line = re.sub(r"^#(\s*-L\$\(SSL\)/lib )", r"\1 -L$(SSL)/lib64 ", line)
                 sys.stdout.write(line)
 
-        super(EB_Python, self).configure_step()
+        super(EB_python, self).configure_step()
 
     def install_step(self):
         """Extend make install to make sure that the 'python' command is present."""
-        super(EB_Python, self).install_step()
+        super(EB_python, self).install_step()
 
         python_binary_path = os.path.join(self.installdir, 'bin', 'python')
         if not os.path.isfile(python_binary_path):
@@ -146,4 +146,4 @@ class EB_Python(ConfigureMake):
             ('python', '-c "import readline"'),  # make sure readline support was built correctly
         ]
 
-        super(EB_Python, self).sanity_check_step(custom_paths=custom_paths, custom_commands=custom_commands)
+        super(EB_python, self).sanity_check_step(custom_paths=custom_paths, custom_commands=custom_commands)

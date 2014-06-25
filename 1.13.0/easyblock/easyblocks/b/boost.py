@@ -48,12 +48,12 @@ from easybuild.tools.run import run_cmd
 from easybuild.tools.systemtools import get_glibc_version, UNKNOWN
 
 
-class EB_Boost(EasyBlock):
+class EB_boost(EasyBlock):
     """Support for building Boost."""
 
     def __init__(self, *args, **kwargs):
         """Initialize Boost-specific variables."""
-        super(EB_Boost, self).__init__(*args, **kwargs)
+        super(EB_boost, self).__init__(*args, **kwargs)
 
         self.objdir = None
 
@@ -68,7 +68,7 @@ class EB_Boost(EasyBlock):
 
     def patch_step(self):
         """Patch Boost source code before building."""
-        super(EB_Boost, self).patch_step()
+        super(EB_boost, self).patch_step()
 
         # TIME_UTC is also defined in recent glibc versions, so we need to rename it for old Boost versions (<= 1.47)
         glibc_version = get_glibc_version()
@@ -183,4 +183,4 @@ class EB_Boost(EasyBlock):
         if get_software_root('Python'):
             custom_paths["files"].append('lib/libboost_python.so')
 
-        super(EB_Boost, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_boost, self).sanity_check_step(custom_paths=custom_paths)

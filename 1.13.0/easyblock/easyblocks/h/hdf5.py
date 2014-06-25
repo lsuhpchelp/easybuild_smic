@@ -39,7 +39,7 @@ from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.tools.modules import get_software_root
 
 
-class EB_HDF5(ConfigureMake):
+class EB_hdf5(ConfigureMake):
     """Support for building/installing HDF5"""
 
     def configure_step(self):
@@ -47,8 +47,8 @@ class EB_HDF5(ConfigureMake):
 
         # configure options for dependencies
         deps = [
-            ("Szip", "--with-szlib"),
-            ("zlib", "--with-zlib"),
+            ("szip", "--with-szlib"),
+#            ("zlib", "--with-zlib"),
         ]
         for (dep, opt) in deps:
             root = get_software_root(dep)
@@ -76,7 +76,7 @@ class EB_HDF5(ConfigureMake):
         if self.toolchain.options.get('usempi', None):
             env.setvar('RUNPARALLEL', 'mpirun -np \$\${NPROCS:=2}')
 
-        super(EB_HDF5, self).configure_step()
+        super(EB_hdf5, self).configure_step()
 
     # default make and make install are ok
 
@@ -102,4 +102,4 @@ class EB_HDF5(ConfigureMake):
                         'dirs': ['include']
                        }
 
-        super(EB_HDF5, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_hdf5, self).sanity_check_step(custom_paths=custom_paths)

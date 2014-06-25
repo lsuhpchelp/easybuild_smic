@@ -38,7 +38,7 @@ from easybuild.tools.filetools import run_cmd
 EXTS_FILTER_PERL_MODULES = ("perldoc -lm %(ext_name)s ", "")
 
 
-class EB_Perl(ConfigureMake):
+class EB_perl(ConfigureMake):
     """Support for building and installing Perl."""
 
     def configure_step(self):
@@ -65,12 +65,12 @@ class EB_Perl(ConfigureMake):
 
     def sanity_check_step(self):
         """Custom sanity check for Perl."""
-        majver = self.version.split('.')[0]
-        custom_paths = {
-            'files': [os.path.join('bin', x) for x in ['perl', 'perldoc']],
-            'dirs': ['lib/perl%s/%s' % (majver, self.version), 'man']
-        }
-        super(EB_Perl, self).sanity_check_step(custom_paths=custom_paths)
+        #majver = self.version.split('.')[0]
+        #custom_paths = {
+        #    'files': [os.path.join('bin', x) for x in ['perl', 'perldoc']],
+        #    'dirs': ['lib/perl%s/%s' % (majver, self.version), 'man']
+        #}
+        #super(EB_perl, self).sanity_check_step(custom_paths=custom_paths)
 
 
 def get_major_perl_version():

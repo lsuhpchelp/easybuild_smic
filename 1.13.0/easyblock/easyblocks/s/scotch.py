@@ -43,7 +43,7 @@ from easybuild.framework.easyblock import EasyBlock
 from easybuild.tools.filetools import run_cmd, copytree
 
 
-class EB_SCOTCH(EasyBlock):
+class EB_scotch(EasyBlock):
     """Support for building/installing SCOTCH."""
 
     def configure_step(self):
@@ -165,4 +165,4 @@ class EB_SCOTCH(EasyBlock):
                         'dirs':[]
                         }
 
-        super(EB_SCOTCH, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_scotch, self).sanity_check_step(custom_paths=custom_paths)

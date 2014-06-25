@@ -41,7 +41,7 @@ from easybuild.tools import toolchain
 from easybuild.tools.modules import get_software_root
 
 
-class EB_MUMPS(ConfigureMake):
+class EB_mumps(ConfigureMake):
     """Support for building/installing MUMPS."""
 
     def configure_step(self):
@@ -140,5 +140,5 @@ class EB_MUMPS(ConfigureMake):
             'dirs': [],
         }
 
-        super(EB_MUMPS, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_mumps, self).sanity_check_step(custom_paths=custom_paths)
 

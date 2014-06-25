@@ -49,7 +49,7 @@ from easybuild.tools.modules import get_software_root
 from easybuild.tools.systemtools import check_os_dependency, get_kernel_name, get_os_name, get_shared_lib_ext, get_platform_name
 
 
-class EB_GCC(ConfigureMake):
+class EB_gcc(ConfigureMake):
     """
     Self-contained build of GCC.
     Uses system compiler for initial build, then bootstraps.
@@ -70,7 +70,7 @@ class EB_GCC(ConfigureMake):
         return ConfigureMake.extra_options(extra_vars)
 
     def __init__(self, *args, **kwargs):
-        super(EB_GCC, self).__init__(*args, **kwargs)
+        super(EB_gcc, self).__init__(*args, **kwargs)
 
         self.stagedbuild = False
 
@@ -479,7 +479,7 @@ class EB_GCC(ConfigureMake):
         self.cfg.update('makeopts', 'bootstrap')
 
         # call standard build_step
-        super(EB_GCC, self).build_step()
+        super(EB_gcc, self).build_step()
 
     # make install is just standard install_step, nothing special there
 
@@ -551,13 +551,13 @@ class EB_GCC(ConfigureMake):
             'dirs': dirs,
         }
 
-        super(EB_GCC, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_gcc, self).sanity_check_step(custom_paths=custom_paths)
 
     def make_module_req_guess(self):
         """
         Make sure all GCC libs are in LD_LIBRARY_PATH
         """
-        guesses = super(EB_GCC, self).make_module_req_guess()
+        guesses = super(EB_gcc, self).make_module_req_guess()
         guesses.update({
             'PATH': ['bin'],
             'LD_LIBRARY_PATH': ['lib', 'lib64',

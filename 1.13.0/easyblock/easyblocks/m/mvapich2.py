@@ -39,7 +39,7 @@ from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.framework.easyconfig import CUSTOM
 
 
-class EB_MVAPICH2(ConfigureMake):
+class EB_mvapich2(ConfigureMake):
     """
     Support for building the MVAPICH2 MPI library.
     - some compiler dependent configure options
@@ -65,7 +65,7 @@ class EB_MVAPICH2(ConfigureMake):
         # things might go wrong if a previous install dir is present, so let's get rid of it
         if not self.cfg['keeppreviousinstall']:
             self.log.info("Making sure any old installation is removed before we start the build...")
-            super(EB_MVAPICH2, self).make_dir(self.installdir, True, dontcreateinstalldir=True)
+            super(EB_mvapich2, self).make_dir(self.installdir, True, dontcreateinstalldir=True)
 
         # additional configuration options
         add_configopts = []
@@ -124,7 +124,7 @@ class EB_MVAPICH2(ConfigureMake):
 
         self.cfg.update('configopts', ' '.join(add_configopts))
 
-        super(EB_MVAPICH2, self).configure_step()
+        super(EB_mvapich2, self).configure_step()
 
     # make and make install are default
 
@@ -141,4 +141,4 @@ class EB_MVAPICH2(ConfigureMake):
                         'dirs': ["include"]
                        }
 
-        super(EB_MVAPICH2, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_mvapich2, self).sanity_check_step(custom_paths=custom_paths)

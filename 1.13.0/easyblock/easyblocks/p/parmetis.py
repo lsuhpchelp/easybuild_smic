@@ -39,7 +39,7 @@ from easybuild.framework.easyblock import EasyBlock
 from easybuild.tools.filetools import run_cmd, mkdir
 
 
-class EB_ParMETIS(EasyBlock):
+class EB_parmetis(EasyBlock):
     """Support for building and installing ParMETIS."""
 
     def configure_step(self):
@@ -180,4 +180,4 @@ class EB_ParMETIS(EasyBlock):
                         'dirs':['Lib']
                        }
 
-        super(EB_ParMETIS, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_parmetis, self).sanity_check_step(custom_paths=custom_paths)
