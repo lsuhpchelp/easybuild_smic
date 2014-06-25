@@ -39,7 +39,7 @@ TC_CONSTANT_GCC = "GCC"
 class Gcc(Compiler):
     """GCC compiler class"""
 
-    COMPILER_MODULE_NAME = ['GCC']
+    COMPILER_MODULE_NAME = ['gcc']
 
     COMPILER_FAMILY = TC_CONSTANT_GCC
     COMPILER_UNIQUE_OPTS = {

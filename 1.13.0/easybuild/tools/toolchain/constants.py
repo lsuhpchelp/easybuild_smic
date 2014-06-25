@@ -39,7 +39,6 @@ COMPILER_VARIABLES = [
     ('CXX', 'C++ compiler'),
     ('F77', 'Fortran 77 compiler'),
     ('F90', 'Fortran 90 compiler'),
-    ('FC', 'Fortran compiler'), #OpenMPI will pick gfortran without this being defined
 ]
 
 COMPILER_FLAGS = [
@@ -47,7 +46,6 @@ COMPILER_FLAGS = [
     ('CXXFLAGS', 'C++ compiler flags'),
     ('FFLAGS', 'Fortran compiler flags'),
     ('F90FLAGS', 'Fortran 90 compiler flags'),
-    ('FCFLAGS', 'Fortran compiler flags'),
 ]
 
 COMPILER_MAP_CLASS = {

@@ -1,0 +1,29 @@
+easyblock = "PythonPackage"
+
+name = 'mercurial'
+version = '2.5.2'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://mercurial.selenic.com/'
+description = """Mercurial is a free, distributed source control management tool.
+ It efficiently handles projects of any size and offers an easy and intuitive interface."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://mercurial.selenic.com/release/']
+sources = [SOURCELOWER_TAR_GZ]
+
+python = "python"
+pythonversion = '2.7.7-anaconda'
+pythonshortversion = ".".join(pythonversion.split(".")[:-1])
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+dependencies = [(python, pythonversion,'',('dummy','dummy'))]
+
+sanity_check_paths = {
+    'files': ['bin/hg'],
+    'dirs': ['lib/python%s/site-packages/mercurial' % pythonshortversion],
+}
+
