@@ -24,7 +24,7 @@ from distutils.version import LooseVersion
 from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.tools.filetools import adjust_permissions
 
-class EB_SAMtools(ConfigureMake):
+class EB_samtools(ConfigureMake):
     """
     Support for building SAMtools; SAM (Sequence Alignment/Map) format
     is a generic format for storing large nucleotide sequence alignments.
@@ -32,7 +32,7 @@ class EB_SAMtools(ConfigureMake):
 
     def __init__(self, *args, **kwargs):
         """Define lists of files to install."""
-        super(EB_SAMtools, self).__init__(*args, **kwargs)
+        super(EB_samtools, self).__init__(*args, **kwargs)
 
         self.bin_files = ["bcftools/vcfutils.pl", "bcftools/bcftools", "misc/blast2sam.pl",
                           "misc/bowtie2sam.pl", "misc/export2sam.pl", "misc/interpolate_sam.pl",
@@ -93,4 +93,4 @@ class EB_SAMtools(ConfigureMake):
                         'dirs': []
                        }
 
-        super(EB_SAMtools, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_samtools, self).sanity_check_step(custom_paths=custom_paths)

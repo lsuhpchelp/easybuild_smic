@@ -39,7 +39,7 @@ from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.tools.filetools import run_cmd, mkdir
 
 
-class EB_METIS(ConfigureMake):
+class EB_metis(ConfigureMake):
     """Support for building and installing METIS."""
 
     def configure_step(self, *args, **kwargs):
@@ -58,7 +58,7 @@ class EB_METIS(ConfigureMake):
         if self.toolchain.options['pic']:
             self.cfg.update('makeopts', 'CC="$CC -fPIC"')
 
-        super(EB_METIS, self).build_step()
+        super(EB_metis, self).build_step()
 
     def install_step(self):
         """
@@ -106,7 +106,7 @@ class EB_METIS(ConfigureMake):
                 self.log.error("Something went wrong during symlink creation: %s" % err)
 
         else:
-            super(EB_METIS, self).install_step()
+            super(EB_metis, self).install_step()
 
     def sanity_check_step(self):
         """Custom sanity check for METIS (more extensive for recent version (>= v5))"""
@@ -129,4 +129,4 @@ class EB_METIS(ConfigureMake):
                         'dirs' : dirs
                        }
 
-        super(EB_METIS, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_metis, self).sanity_check_step(custom_paths=custom_paths)
