@@ -42,13 +42,13 @@ from easybuild.easyblocks.perl import get_major_perl_version
 from easybuild.tools.filetools import run_cmd
 
 
-class EB_MUMmer(ConfigureMake):
+class EB_mummer(ConfigureMake):
     """Support for building and installing MUMmer (rapidly aligning entire genomes)."""
 
     def __init__(self, *args, **kwargs):
         """Define list of bin/aux_bin files."""
 
-        super(EB_MUMmer, self).__init__(*args, **kwargs)
+        super(EB_mummer, self).__init__(*args, **kwargs)
 
         self.bin_files = [
             "mummer", "annotate", "combineMUMs", "delta-filter", "gaps", "mgaps",
@@ -102,7 +102,7 @@ class EB_MUMmer(ConfigureMake):
         perlmajver = get_major_perl_version()
 
         # set $PATH and $PERLXLIB correctly
-        txt = super(EB_MUMmer, self).make_module_extra()
+        txt = super(EB_mummer, self).make_module_extra()
         txt += self.moduleGenerator.prepend_paths("PATH", ['bin'])
         txt += self.moduleGenerator.prepend_paths("PATH", ['bin/aux_bin'])
         txt += self.moduleGenerator.prepend_paths("PERL%sLIB" % perlmajver, ['bin/scripts'])
@@ -118,4 +118,4 @@ class EB_MUMmer(ConfigureMake):
                 ['bin/scripts/%s' % x for x in self.script_files],
             'dirs': []
         }
-        super(EB_MUMmer, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_mummer, self).sanity_check_step(custom_paths=custom_paths)
