@@ -23,23 +23,19 @@
 # along with EasyBuild.  If not, see <http://www.gnu.org/licenses/>.
 ##
 """
-Support for MVAPICH2 as toolchain MPI library.
+EasyBuild support for intel-140-MVAPICH2 compiler toolchain (includes Intel compilers (icc, ifort) and MVAPICH2).
 
 @author: Stijn De Weirdt (Ghent University)
 @author: Kenneth Hoste (Ghent University)
 """
 
-from easybuild.toolchains.mpi.mpich2 import Mpich2
+from easybuild.toolchains.compiler.inteliccifort import IntelIccIfort
+from easybuild.toolchains.mpi.mvapich2 import Mvapich2
+from easybuild.toolchains.linalg.intelmkl import IntelMKL
 
 
-TC_CONSTANT_MVAPICH2 = "MVAPICH2"
-
-
-class Mvapich2(Mpich2):
-    """MVAPICH2 MPI class"""
-    MPI_MODULE_NAME = ["mvapich2"]
-    MPI_FAMILY = TC_CONSTANT_MVAPICH2
-
-    MPI_LIBRARY_NAME = 'mpich'
-
-    MPI_LINK_INFO_OPTION = '-link_info'
+class INTEL_140_MVAPICH2(IntelIccIfort, Mvapich2, IntelMKL):
+    """
+    Compiler toolchain with Intel compilers (icc/ifort) and MPICH.
+    """
+    NAME = 'INTEL-140-MVAPICH2'

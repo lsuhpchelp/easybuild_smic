@@ -23,7 +23,7 @@ import shutil
 from easybuild.easyblocks.generic.configuremake import ConfigureMake
 
 
-class EB_Bowtie2(ConfigureMake):
+class EB_bowtie2(ConfigureMake):
     """
     Support for building bowtie2 (ifast and sensitive read alignment)
     - create Make.UNKNOWN
@@ -59,5 +59,5 @@ class EB_Bowtie2(ConfigureMake):
                         'dirs': ['.']
                        }
 
-        super(EB_Bowtie2, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_bowtie2, self).sanity_check_step(custom_paths=custom_paths)
 
