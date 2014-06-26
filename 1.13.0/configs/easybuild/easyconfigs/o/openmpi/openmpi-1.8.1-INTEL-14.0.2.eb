@@ -16,6 +16,9 @@ configopts += '--enable-mpirun-prefix-by-default '  # suppress failure modes in 
 configopts += '--with-hwloc --with-fca=/opt/mellanox/fca --with-mxm=/opt/mellanox/mxm'
 #configopts += '--with-hwloc=$EBROOTHWLOC '  # hwloc support
 
+# Otherwise EB will pick gfortran as the F90 compiler
+preconfigopts = 'export FC="$F90"; export FCFLAGS="$F90FLAGS"; unset F90; unset F90FLAGS; '
+
 #This dependency should be osdependencies on the production system
 #dependencies = [('hwloc', '1.8.1')]
 osdependencies = [('hwloc','libibverbs-devel','fca','mxm')]
