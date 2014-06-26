@@ -83,21 +83,21 @@ class EB_mumps(ConfigureMake):
         metis = get_software_root('METIS')
         parmetis = get_software_root('ParMETIS')
         if parmetis:
-            lmetisdir = "$EBROOTPARMETIS"
-            lmetis= "-L$EBROOTPARMETIS -lparmetis -lmetis"
+            lmetisdir = "$LHPC_ROOTPARMETIS"
+            lmetis= "-L$LHPC_ROOTPARMETIS -lparmetis -lmetis"
             dmetis = "-Dparmetis"
         elif metis:
-            lmetisdir = "$EBROOTMETIS"
-            lmetis= "-L$EBROOTMETIS -lmetis"
+            lmetisdir = "$LHPC_ROOTMETIS"
+            lmetis= "-L$LHPC_ROOTMETIS -lmetis"
             dmetis = "-Dmetis"
         else:
             self.log.error("METIS or ParMETIS must be available as dependency.")
 
         # set Make options
         mumps_make_opts = {
-            'SCOTCHDIR': "$EBROOTSCOTCH",
-            'LSCOTCH': "-L$EBROOTSCOTCH/lib -lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr",
-            'ISCOTCH': "-I$EBROOTSCOTCH/include",
+            'SCOTCHDIR': "$LHPC_ROOTSCOTCH",
+            'LSCOTCH': "-L$LHPC_ROOTSCOTCH/lib -lptesmumps -lptscotch -lptscotcherr -lesmumps -lscotch -lscotcherr",
+            'ISCOTCH': "-I$LHPC_ROOTSCOTCH/include",
             'LMETISDIR': lmetisdir,
             'LMETIS': lmetis,
             'IMETIS': "-I%s/include" % lmetisdir,
