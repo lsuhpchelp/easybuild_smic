@@ -37,7 +37,7 @@ from easybuild.easyblocks.generic.cmakemake import CMakeMake
 from easybuild.tools.modules import get_software_root
 
 
-class EB_GROMACS(CMakeMake):
+class EB_gromacs(CMakeMake):
     """Support for building/installing GROMACS."""
 
     def configure_step(self):
@@ -103,7 +103,7 @@ class EB_GROMACS(CMakeMake):
             
 
         # complete configuration with configure_method of parent
-        out = super(EB_GROMACS, self).configure_step()
+        out = super(EB_gromacs, self).configure_step()
 
         # for recent GROMACS versions, make very sure that a decent BLAS, LAPACK and FFT is found and used
         if LooseVersion(self.version) >= LooseVersion('4.6.5'):
@@ -126,7 +126,7 @@ class EB_GROMACS(CMakeMake):
         # make very sure OMP_NUM_THREADS is set to 1, to avoid hanging GROMACS regression test
         env.setvar('OMP_NUM_THREADS', '1')
 
-        super(EB_GROMACS, self).test_step()
+        super(EB_gromacs, self).test_step()
 
     def sanity_check_step(self):
         """Custom sanity check for GROMACS."""
@@ -141,4 +141,4 @@ class EB_GROMACS(CMakeMake):
                      ['lib/lib%s%s.a' % (lib, suff) for lib in ['gmxana', 'gmx', 'gmxpreprocess', 'md']],
             'dirs': ['include/gromacs', 'lib/pkgconfig'],
         }
-        super(EB_GROMACS, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_gromacs, self).sanity_check_step(custom_paths=custom_paths)

@@ -20,7 +20,7 @@ homepage = 'http://www.gromacs.org'
 description = """GROMACS is a versatile package to perform molecular dynamics,
  i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."""
 
-toolchain = {'name': 'INTEL-140-MVAPICH', 'version': '2.0'}
+toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
 toolchainopts = {'openmp': True, 'usempi': True}
 
 # eg. ftp://ftp.gromacs.org/pub/gromacs/gromacs-4.6.tar.gz
