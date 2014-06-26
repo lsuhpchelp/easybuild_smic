@@ -42,7 +42,7 @@ from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.tools.modules import get_software_root, get_software_version
 
 
-class EB_netCDF(CMakeMake):
+class EB_netcdf(CMakeMake):
     """Support for building/installing netCDF"""
 
     def configure_step(self):
@@ -93,7 +93,7 @@ class EB_netCDF(CMakeMake):
                         'dirs': []
                        }
 
-        super(EB_netCDF, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_netcdf, self).sanity_check_step(custom_paths=custom_paths)
 
 def set_netcdf_env_vars(log):
     """Set netCDF environment variables used by other software."""
