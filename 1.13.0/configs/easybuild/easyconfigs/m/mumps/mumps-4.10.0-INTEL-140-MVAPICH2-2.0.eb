@@ -11,7 +11,7 @@ toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
 toolchainopts = {'pic': True, 'usempi': True}
 
 source_urls = ['http://mumps.enseeiht.fr/']
-sources = ['%(name)s_%(version)s.tar.gz']
+sources = ['MUMPS_%(version)s.tar.gz']
 
 dependencies = [
     ('scotch', '6.0.0_esmumps'),
