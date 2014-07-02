@@ -32,7 +32,7 @@ import os
 from easybuild.easyblocks.generic.configuremake import ConfigureMake
 
 
-class EB_Hypre(ConfigureMake):
+class EB_hypre(ConfigureMake):
     """Support for building Hypre."""
 
     def configure_step(self):
@@ -46,7 +46,7 @@ class EB_Hypre(ConfigureMake):
             self.cfg.update('configopts', '--with-%s-lib-dirs="%s"' % (dep.lower(),
                                                                       os.getenv('%s_LIB_DIR' % dep)))
 
-        super(EB_Hypre, self).configure_step()
+        super(EB_hypre, self).configure_step()
 
     def sanity_check_step(self):
         """Custom sanity check for Hypre."""
@@ -56,4 +56,4 @@ class EB_Hypre(ConfigureMake):
                         'dirs':['include']
                        }
 
-        super(EB_Hypre, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_hypre, self).sanity_check_step(custom_paths=custom_paths)

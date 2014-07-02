@@ -1,0 +1,18 @@
+name = 'lapack'
+version = "3.4.2"
+author = 'shaohao'
+requested_by = 'essential'
+
+homepage = 'http://www.netlib.org/lapack/'
+description = """LAPACK is written in Fortran90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems."""
+
+toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
+#toolchainopts = {'pic': True}
+
+sources = [SOURCELOWER_TGZ]
+source_urls = [homepage]
+
+#blaslib = 'ATLAS'
+#blasver = '3.8.4'
+
+#moduleclass = 'numlib'
