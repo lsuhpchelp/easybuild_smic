@@ -1,0 +1,25 @@
+easyblock = 'CMakeMake'
+
+name = 'paraview'
+version = '4.1.0'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = "http://www.paraview.org"
+description = "Paraview is a scientific parallel visualizer"
+
+toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
+toolchainopts = {'usempi': True, 'pic': True}
+
+download_suffix = 'download.php?submit=Download&version=v%(version_major_minor)s&type=source&os=all&downloadFile='
+source_urls = ['http://www.paraview.org/paraview-downloads/%s' % download_suffix]
+sources = ["ParaView-v%(version)s-source.tar.gz"]
+
+dependencies = [('qt','4.8.4', '', ('INTEL','14.0.2'))]
+#osdependencies = [('qt-devel')]
+
+builddependencies = [('cmake', '2.8.12', '', ('INTEL','14.0.2'))]
+
+separate_build_dir = True
+
+moduleclass = 'vis'

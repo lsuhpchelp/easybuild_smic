@@ -137,7 +137,9 @@ class EB_mvapich2(ConfigureMake):
                                                          "mpif90", "mpiexec.hydra"]] +
                                  ["lib/lib%s" % y for x in ["fmpich", "mpichcxx", "mpichf90",
                                                             "mpich", "mpl", "opa"]
-                                                 for y in ["%s.so"%x, "%s.a"%x]],
+                                                 for y in ["%s.so"%x]],
+# For MVAPICH2 2.1, some .a files are not created by default.
+#                                                 for y in ["%s.so"%x, "%s.a"%x]],
                         'dirs': ["include"]
                        }
 

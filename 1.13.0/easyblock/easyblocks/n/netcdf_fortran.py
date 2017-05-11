@@ -39,7 +39,7 @@ import easybuild.tools.toolchain as toolchain
 from easybuild.easyblocks.generic.configuremake import ConfigureMake
 
 
-class EB_netCDF_minus_Fortran(ConfigureMake):
+class EB_netcdf_underscore_fortran(ConfigureMake):
     """Support for building/installing the netCDF-Fortran library"""
 
     def configure_step(self):
@@ -54,7 +54,7 @@ class EB_netCDF_minus_Fortran(ConfigureMake):
         if self.toolchain.comp_family() == toolchain.GCC:  #@UndefinedVariable
             env.setvar('CPPFLAGS', "%s -DgFortran" % os.getenv('CPPFLAGS'))
 
-        super(EB_netCDF_minus_Fortran, self).configure_step()
+        super(EB_netcdf_underscore_fortran, self).configure_step()
 
     def sanity_check_step(self):
         """
@@ -67,4 +67,4 @@ class EB_netCDF_minus_Fortran(ConfigureMake):
                         'dirs': []
                        }
 
-        super(EB_netCDF_minus_Fortran, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_netcdf_underscore_fortran, self).sanity_check_step(custom_paths=custom_paths)

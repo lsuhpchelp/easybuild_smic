@@ -1,0 +1,10 @@
+name = 'python'
+version = '2.7.7-anaconda'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://python.org/'
+description = "Python is a programming language that lets you work more quickly and integrate your systems more effectively."
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchainopts = {'pic': True, 'opt': True, 'optarch': True}

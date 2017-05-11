@@ -26,14 +26,14 @@ from distutils.version import LooseVersion
 from easybuild.easyblocks.generic.configuremake import ConfigureMake
 
 
-class EB_BWA(ConfigureMake):
+class EB_bwa(ConfigureMake):
     """
     Support for building BWA
     """
 
     def __init__(self, *args, **kwargs):
         """Add extra config options specific to BWA."""
-        super(EB_BWA, self).__init__(*args, **kwargs)
+        super(EB_bwa, self).__init__(*args, **kwargs)
         self.files = []
 
     def configure_step(self):
@@ -68,4 +68,4 @@ class EB_BWA(ConfigureMake):
             'dirs': []
         }
 
-        super(EB_BWA, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_bwa, self).sanity_check_step(custom_paths=custom_paths)

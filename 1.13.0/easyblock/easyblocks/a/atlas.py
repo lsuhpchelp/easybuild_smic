@@ -45,7 +45,7 @@ from easybuild.tools.modules import get_software_root
 from easybuild.tools.systemtools import get_cpu_speed
 
 
-class EB_ATLAS(ConfigureMake):
+class EB_atlas(ConfigureMake):
     """
     Support for building ATLAS
     - configure (and check if it failed due to CPU throttling being enabled)
@@ -54,7 +54,7 @@ class EB_ATLAS(ConfigureMake):
     """
 
     def __init__(self, *args, **kwargs):
-        super(EB_ATLAS, self).__init__(*args, **kwargs)
+        super(EB_atlas, self).__init__(*args, **kwargs)
 
     @staticmethod
     def extra_options():
@@ -162,13 +162,13 @@ Configure failed, not sure why (see output above).""" % out
         if not nr:
             self.log.warning("Ignoring requested parallelism, it breaks ATLAS, so setting to 1")
         self.log.info("Disabling parallel build, makes no sense for ATLAS.")
-        super(EB_ATLAS, self).set_parallelism(1)
+        super(EB_atlas, self).set_parallelism(1)
 
 
     def build_step(self, verbose=False):
 
         # default make is fine
-        super(EB_ATLAS, self).build_step(verbose=verbose)
+        super(EB_atlas, self).build_step(verbose=verbose)
 
         # optionally also build shared libs
         if self.cfg['sharedlibs']:
@@ -192,7 +192,7 @@ Configure failed, not sure why (see output above).""" % out
         Default make install and optionally remove incomplete lapack libs.
         If the full_lapack option was set to false we don't
         """
-        super(EB_ATLAS, self).install_step()
+        super(EB_atlas, self).install_step()
         if not self.cfg['full_lapack']:
             for i in ['liblapack.a', 'liblapack.so']:
                 lib = os.path.join(self.installdir, "lib", i[0])
@@ -212,16 +212,16 @@ Configure failed, not sure why (see output above).""" % out
 
         # sanity tests
         self.cfg['runtest'] = 'check'
-        super(EB_ATLAS, self).test_step()
+        super(EB_atlas, self).test_step()
 
         # checks of threaded code (only if required)
         if os.path.exists(os.path.join(self.cfg['start_dir'], 'obj', 'include', 'atlas_pthreads.h')):
             self.cfg['runtest'] = 'ptcheck'
-            super(EB_ATLAS, self).test_step()
+            super(EB_atlas, self).test_step()
 
         # performance summary
         self.cfg['runtest'] = 'time'
-        super(EB_ATLAS, self).test_step()
+        super(EB_atlas, self).test_step()
 
     # default make install is fine
 
@@ -245,4 +245,4 @@ Configure failed, not sure why (see output above).""" % out
                         'dirs': ["include/atlas"]
                        }
 
-        super(EB_ATLAS, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_atlas, self).sanity_check_step(custom_paths=custom_paths)

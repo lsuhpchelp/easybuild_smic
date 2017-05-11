@@ -34,7 +34,7 @@ from easybuild.easyblocks.generic.configuremake import ConfigureMake
 from easybuild.tools.filetools import run_cmd_qa
 
 
-class EB_Qt(ConfigureMake):
+class EB_qt(ConfigureMake):
     """
     Support for building and installing Qt.
     """
@@ -72,7 +72,7 @@ class EB_Qt(ConfigureMake):
         # cfr. https://elist.ornl.gov/pipermail/visit-developers/2011-September/010063.html
         self.cfg.update('premakeopts', 'LD_LIBRARY_PATH=%s:$LD_LIBRARY_PATH' % os.path.join(self.cfg['start_dir'], 'lib'))
 
-        super(EB_Qt, self).build_step()
+        super(EB_qt, self).build_step()
 
     def sanity_check_step(self):
         """Custom sanity check for Qt."""
@@ -82,4 +82,4 @@ class EB_Qt(ConfigureMake):
             'dirs': ["bin", "include", "plugins"],
         }
 
-        super(EB_Qt, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_qt, self).sanity_check_step(custom_paths=custom_paths)

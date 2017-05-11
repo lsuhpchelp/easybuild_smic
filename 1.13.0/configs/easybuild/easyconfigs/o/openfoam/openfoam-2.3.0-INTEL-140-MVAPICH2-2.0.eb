@@ -1,0 +1,57 @@
+name = 'openfoam'
+version = '2.3.0'
+author = 'fchen14'
+requested_by = 'Application/CFD'
+
+homepage = 'http://www.openfoam.com/'
+description = """OpenFOAM is a free, open source CFD software package. 
+ OpenFOAM has an extensive range of features to solve anything from complex fluid flows
+ involving chemical reactions, turbulence and heat transfer, 
+ to solid dynamics and electromagnetics."""
+
+toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
+
+#source_urls = ['http://downloads.sourceforge.net/foam/%(version)s']
+#               http://downloads.sourceforge.net/project/foam/foam/2.2.2/OpenFOAM-2.2.2.tgz
+source_urls = ['http://downloads.sourceforge.net/project/foam/foam/%(version)s']
+sources = [
+#    SOURCE_TGZ,
+    'OpenFOAM-%(version)s.tgz',
+    'ThirdParty-%(version)s.tgz',
+]
+
+#patches = [
+#    'cleanup-OpenFOAM-%(version)s.patch',
+#    'OpenFOAM-%(version)s_libreadline.patch',
+#    ('cleanup-ThirdParty-%(version)s.patch', ".."),  # patch should not be applied in OpenFOAM subdir
+#]
+
+patches = [
+    'cleanup-OpenFOAM-%(version)s.patch',
+#    'OpenFOAM-%(version)s_libreadline.patch',
+    ('cleanup-ThirdParty-%(version)s.patch', ".."),  # patch should not be applied in OpenFOAM subdir
+]
+
+#dependencies = [
+#    ('libreadline', '6.2'),
+#    ('scotch', '6.0.0_esmumps'),
+#    ('ncurses', '5.9'),
+#]
+
+osdependencies = [
+    ('readline-devel', '6.0'),
+    ('ncurses-devel', '5.7'),
+#    ('flex', '2.5.35'),
+]
+
+dependencies = [
+#    ('libreadline', '6.2'),
+#    ('scotch', '6.0.0_esmumps'),
+#    ('ncurses', '5.9'),
+]
+
+#builddependencies = [('flex', '2.5.37')]
+
+premakeopts = 'SCOTCH_ROOT=$EBROOTSCOTCH'
+
+moduleclass = 'cae'

@@ -42,12 +42,12 @@ from easybuild.tools.filetools import mkdir, run_cmd, adjust_permissions
 from easybuild.tools.modules import get_software_libdir, get_software_root, get_software_version
 
 
-class EB_NWChem(ConfigureMake):
+class EB_nwchem(ConfigureMake):
     """Support for building/installing NWChem."""
 
     def __init__(self, *args, **kwargs):
         """Initialisation of custom class variables for NWChem."""
-        super(EB_NWChem, self).__init__(*args, **kwargs)
+        super(EB_nwchem, self).__init__(*args, **kwargs)
 
         self.test_cases_dir = None
         # path for symlink to local copy of default .nwchemrc, required by NWChem at runtime
@@ -179,6 +179,8 @@ class EB_NWChem(ConfigureMake):
                 libmpi = "-lmpigf -lmpigi -lmpi_ilp64 -lmpi"
         elif mpi_family in [toolchain.MPICH2]:
             libmpi = "-lmpich -lopa -lmpl -lrt -lpthread"
+        elif mpi_family in [toolchain.MVAPICH2]:
+            libmpi = "-lmpich -lopa -lmpl -lrt -lpthread"
         else:
             self.log.error("Don't know how to set LIBMPI for %s" % mpi_family)
         env.setvar('LIBMPI', libmpi)
@@ -238,7 +240,7 @@ class EB_NWChem(ConfigureMake):
             os.unsetenv(var)
             os.environ.pop(var)
 
-        super(EB_NWChem, self).build_step(verbose=True)
+        super(EB_nwchem, self).build_step(verbose=True)
 
         # build version info
         try:
@@ -328,12 +330,12 @@ class EB_NWChem(ConfigureMake):
                                                                    'libraries', 'libraryps']],
                        }
 
-        super(EB_NWChem, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_nwchem, self).sanity_check_step(custom_paths=custom_paths)
 
     def make_module_extra(self):
         """Custom extra module file entries for NWChem."""
 
-        txt = super(EB_NWChem, self).make_module_extra()
+        txt = super(EB_nwchem, self).make_module_extra()
 
         txt += self.moduleGenerator.set_environment("PYTHONHOME", get_software_root('Python'))
         # '/' at the end is critical for NWCHEM_BASIS_LIBRARY!
@@ -356,7 +358,7 @@ class EB_NWChem(ConfigureMake):
         except OSError, err:
             self.log.error("Failed to copy examples: %s" % err)
 
-        super(EB_NWChem, self).cleanup_step()
+        super(EB_nwchem, self).cleanup_step()
 
     def test_cases_step(self):
         """Run provided list of test cases, or provided examples is no test cases were specified."""

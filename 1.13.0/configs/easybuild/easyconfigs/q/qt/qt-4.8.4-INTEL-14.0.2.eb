@@ -1,0 +1,41 @@
+name = 'qt'
+version = '4.8.4'
+author = 'lyan1'
+requested_by = 'dependency for paraview'
+
+homepage = 'http://qt-project.org/'
+description = "Qt is a comprehensive cross-platform C++ application framework."
+
+toolchain = {'name': 'INTEL', 'version': '14.0.2'}
+
+source_urls = [
+    'http://origin.releases.qt-project.org/qt4/source/',
+    'http://master.qt-project.org/archive/qt/%(version_major_minor)s/%(version)s/'
+]
+sources = ['%(namelower)s-everywhere-opensource-src-%(version)s.tar.gz']
+
+#patches = [
+#    'cleanup-OpenFOAM-%(version)s.patch',
+#    'OpenFOAM-%(version)s_libreadline.patch',
+#    ('cleanup-ThirdParty-%(version)s.patch', ".."),  # patch should not be applied in OpenFOAM subdir
+#]
+
+
+#dependencies = [('GLib', '2.34.3')]
+osdependencies = [('glib2-devel'),]
+#osdependencies = [('glib2-devel'),
+#                  ('gstreamer', '0.10.29'),
+#                  ('gstreamer-devel', '0.10.29'),
+#                  ('gstreamer-tools', '0.10.29'),
+#                  ('gstreamer-plugins-base', '0.10.29'),
+#                  ('gstreamer-plugins-good','0.10.23'),
+#                  ('gstreamer-plugins-bad-free','0.10.19'),
+#                  ('gstreamer-python','0.10.16'),
+#                  ('phonon-backend-gstreamer','4.6.2'),
+#                  ('PackageKit-gstreamer-plugin','0.5.8'),
+#		  ]
+
+
+#builddependencies = [('gstreamer', '0.10.29')]
+
+moduleclass = 'devel'
