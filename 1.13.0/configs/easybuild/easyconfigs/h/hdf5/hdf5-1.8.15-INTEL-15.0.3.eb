@@ -1,0 +1,24 @@
+name = 'hdf5'
+version = '1.8.15'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.hdfgroup.org/HDF5/'
+description = """HDF5 is a unique technology suite that makes possible the management of
+ extremely large and complex data collections."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+source_urls = ['http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-%(version)s/src']
+sources = [SOURCELOWER_TAR_GZ]
+
+patches = [
+    'HDF5-%(version)s_configure_intel.patch',
+    'configure_libtool.patch',
+]
+
+osdependencies = [('zlib','szip')]
+
+moduleclass = 'data'
+

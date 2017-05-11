@@ -1,0 +1,13 @@
+diff -ru Makefile.org Makefile
+--- Makefile.org	2015-10-01 15:35:12.000000000 -0500
++++ Makefile	2015-10-01 15:35:24.000000000 -0500
+@@ -1,6 +1,6 @@
+-CC = cc
+-CFLAGS = -O
+-LIBS = -lpthread
++CC = icc
++CFLAGS = -O3
++LIBS = /usr/lib/x86_64-redhat-linux5E/lib64/libpthread.so
+ OBJS = lucy.o qual_trim.o abi.o vector.o splice.o poly.o
+ 
+ all: lucy beep

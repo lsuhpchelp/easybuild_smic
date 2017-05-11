@@ -1,0 +1,25 @@
+easyblock = "Tarball"
+
+name = 'a5_pipeline'
+version = '20150522'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://code.google.com/p/ngopt/wiki/A5PipelineREADME'
+description = """ A5 is a pipeline for assembling DNA sequence data 
+generated on the Illumina sequencing platform. """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://downloads.sourceforge.net/project/ngopt/']
+sources = ['a5_miseq_linux_%(version)s.tar.gz']
+
+sanity_check_paths = {
+    'files': ['bin/a5_pipeline.pl'],
+    'dirs': [],
+}
+
+modextrapaths = {'PATH':'bin'}
+
+moduleclass = 'bio'
+

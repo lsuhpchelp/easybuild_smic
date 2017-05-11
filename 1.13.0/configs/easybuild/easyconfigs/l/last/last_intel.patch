@@ -1,0 +1,14 @@
+--- src/makefile	2015-09-08 15:28:34.000000000 -0500
++++ src/makefile	2015-09-08 15:28:45.000000000 -0500
+@@ -1,7 +1,7 @@
+-CXX = g++
+-CC  = gcc
++CXX = icpc
++CC  = icc
+ 
+-CXXFLAGS = -O3 -Wall -Wextra -Wcast-qual -Wswitch-enum -Wundef	\
++CXXFLAGS = -O3 -xHost -Wall -Wextra -Wcast-qual -Wswitch-enum -Wundef	\
+ -Wcast-align -Wlogical-op -Wno-long-long -ansi -pedantic
+ # -Wconversion
+ # -fomit-frame-pointer ?
+

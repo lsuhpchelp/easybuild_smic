@@ -1,0 +1,28 @@
+easyblock='MakeCp'
+
+name = 'lucy'
+version = '1.20'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://lucy.sourceforge.net/'
+description = """Lucy is used to clean sequence data from automated DNA sequencers prior to sequence assembly and other downstream uses.  The quality trimming portion of lucy makes use of phred quality scores, such as those produced by many automated sequencers based on the Sanger sequencing method.  As such, lucy’s quality trimming may not be appropriate for sequence data produced by some of the new “next-generation” sequencers."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+
+source_urls = ['http://downloads.sourceforge.net/project/lucy/%(name)s/%(name)s %(version)s/']
+sources = ['%(name)s%(version)s.tar.gz']
+
+patches = ['%(name)s-%(version)s-makefile.patch']
+
+files_to_copy = ["lucy"]
+
+modextrapaths = {'PATH':''}
+
+sanity_check_paths = {
+    'files': ["lucy"],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+

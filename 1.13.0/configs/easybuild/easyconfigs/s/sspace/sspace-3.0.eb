@@ -1,0 +1,22 @@
+easyblock = "Tarball"
+
+name = 'sspace'
+version = '3.0'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://www.baseclear.com/genomics/bioinformatics/basetools/SSPACE'
+description = """ SSPACE standard is a stand-alone program for scaffolding pre-assembled contigs using NGS paired-read data. It is unique in offering the possibility to manually control the scaffolding process. By using the distance information of paired-end and/or matepair data, SSPACE is able to assess the order, distance and orientation of your contigs and combine them into scaffolds. Currently we offer this as a command-line tool in Perl. The input data is given by pre-assembled contig sequences (FASTA) and NGS paired-read data (Illumina/454/Solid FASTA or FASTQ). The final scaffolds are provided in FASTA format."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://www.baseclear.com/base/download/']
+sources = ['41SSPACE-STANDARD-3.0_linux-x86_64.tar.gz']
+
+sanity_check_paths = {
+    'files': ['bin/ExtendOrFormatContigs.pl', 'bin/PairingAndScaffolding.pl', 'bin/readLibFiles.pl'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+

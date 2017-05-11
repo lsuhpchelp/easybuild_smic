@@ -1,0 +1,26 @@
+--- Makefile    2013-05-20 03:36:18.000000000 -0500
++++ Makefile    2015-09-01 13:59:03.000000000 -0500
+@@ -1,9 +1,9 @@
+-CC = gcc
++CC = icc
+ CFLAGS = -Wall
+ DEBUG = -g
+-LIBS = -lm
+-OPT = -O3
+-export MAXKMERLENGTH = 64
++LIBS =
++OPT = -O3 -xHost
++export MAXKMERLENGTH = 97
+ export CATEGORIES = 2
+ DEF = -D MAXKMERLENGTH=$(MAXKMERLENGTH) -D CATEGORIES=$(CATEGORIES)
+ VELVET_DIR=../velvet
+@@ -21,7 +21,7 @@
+ endif
+
+ ifdef OPENMP
+-override CFLAGS := $(CFLAGS) -fopenmp
++override CFLAGS := $(CFLAGS) -openmp
+ endif
+
+ # Per library coverage
+

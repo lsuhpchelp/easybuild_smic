@@ -1,0 +1,37 @@
+easyblock = 'MakeCp'
+
+name = 'quake'
+version = '0.3.5'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://www.cbcb.umd.edu/software/quake/index.html'
+description = """ Quake is a package to correct substitution sequencing errors in experiments with deep coverage (e.g. >15X), specifically intended for Illumina sequencing reads. Quake adopts the k-mer error correction framework, first introduced by the EULER genome assembly package. Unlike EULER and similar progams, Quake utilizes a robust mixture model of erroneous and genuine k-mer distributions to determine where errors are located. Then Quake uses read quality values and learns the nucleotide to nucleotide error rates to determine what types of errors are most likely. This leads to more corrections and greater accuracy, especially with respect to avoiding mis-corrections, which create false sequence unsimilar to anything in the original genome sequence from which the read was taken. """
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+
+source_urls = ['http://www.cbcb.umd.edu/software/quake/downloads/']
+sources = ['%(name)s-%(version)s.tar.gz']
+
+dependencies = [
+	('r','3.1.3'),
+	('jellyfish','2.1.3','',('GCC','4.9.0')),
+]
+
+patches = ['%(name)s-%(version)s-intel-makefile.patch']
+
+prebuildopts = 'cd src && '
+
+# we delete every .o file which is left in bin folder
+buildopts = ' && cd .. && rm -fr src/*.o && rm -fr bin/Makefile*'
+
+files_to_copy = ["bin"]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in ["quake.py", "build_bithash", "correct",
+                                    "count-kmers", "count-qmers"]],
+    'dirs': [""],
+}
+
+moduleclass = 'bio'
+

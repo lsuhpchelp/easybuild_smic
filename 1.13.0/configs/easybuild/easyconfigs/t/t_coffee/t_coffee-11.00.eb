@@ -1,0 +1,24 @@
+easyblock = "Tarball"
+
+name = 't_coffee'
+version = '11.00'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://www.tcoffee.org/'
+description = """ T-Coffee is a multiple sequence alignment package. You can use T-Coffee to align sequences or to combine the output of your favorite alignment methods (Clustal, Mafft, Probcons, Muscle...) into one unique alignment. """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://www.tcoffee.org/Packages/Stable/Latest/linux/']
+sources = ['T-COFFEE_installer_Version_11.00.8cbe486_linux_x64.tar.gz']
+
+sanity_check_paths = {
+    'files': ['bin/t_coffee'],
+    'dirs': ['bin','perl','plugins'],
+}
+
+modextrapaths = {'PATH':'bin'}
+
+moduleclass = 'bio'
+

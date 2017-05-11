@@ -1,0 +1,28 @@
+easyblock = "Tarball"
+
+name = 'mauve'
+version = '20150213'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://darlinglab.org/mauve/mauve.html'
+description = """ Mauve is a system for constructing multiple genome 
+alignments in the presence of large-scale evolutionary events 
+such as rearrangement and inversion. Multiple genome alignments 
+provide a basis for research into comparative genomics and the 
+study of genome-wide evolutionary dynamics. """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://darlinglab.org/mauve/snapshots/2015/2015-02-13/linux-x64/']
+sources = ['%(name)s_linux_snapshot_2015-02-13.tar.gz']
+
+sanity_check_paths = {
+    'files': ['Mauve.jar', 'Mauve'],
+    'dirs': [],
+}
+
+modextrapaths = {'PATH':''}
+
+moduleclass = 'bio'
+

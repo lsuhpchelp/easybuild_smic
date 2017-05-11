@@ -1,0 +1,24 @@
+name = 'netcdf'
+version = '4.2.1.1'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.unidata.ucar.edu/software/netcdf/'
+description = """NetCDF (network Common Data Form) is a set of software libraries 
+ and machine-independent data formats that support the creation, access, and sharing of array-oriented 
+ scientific data."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'pic': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = [
+    'ftp://ftp.unidata.ucar.edu/pub/netcdf/',
+    'ftp://ftp.unidata.ucar.edu/pub/netcdf/old',
+]
+
+dependencies = [('hdf5', '1.8.12')]
+
+#builddependencies = [('Doxygen', '1.8.3.1')]
+osdependencies = [('doxygen')]
+

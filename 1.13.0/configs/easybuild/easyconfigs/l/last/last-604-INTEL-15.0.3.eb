@@ -1,0 +1,33 @@
+name = 'last'
+version = '604'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://last.cbrc.jp/'
+description = """LAST finds similar regions between sequences.
+The main difference between LAST and similar tools (e.g. BLAT, LASTZ) 
+is that it copes more efficiently with repeat-rich sequences (e.g. genomes). 
+For example: it can align reads to genomes without repeat-masking, 
+without becoming overwhelmed by repetitive hits."""
+
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = [SOURCELOWER_ZIP]
+source_urls = [('http://last.cbrc.jp/')]
+
+patches = [('last_intel.patch')]
+
+parallel=1
+
+sanity_check_paths = {
+                      'files': ['bin/lastal','bin/lastdb','scripts/last-train'],
+                      'dirs': []
+                     }
+
+modextrapaths = {'PATH':'scripts'}
+
+moduleclass = 'bio'
+
+

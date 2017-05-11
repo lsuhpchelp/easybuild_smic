@@ -1,0 +1,25 @@
+easyblock = "Tarball"
+
+name = 'blast'
+version = '2.2.22'
+#versionsuffix = "-Linux_x86_64"
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://blast.ncbi.nlm.nih.gov/'
+description = """Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://ftp.ncbi.nlm.nih.gov/blast/executables/release/%(version)s/']
+sources = ['%(namelower)s-%(version)s-x64-linux.tar.gz']
+
+sanity_check_paths = {
+    'files': ["bin/blastall", "bin/impala", "bin/blastpgp" ],
+    'dirs': []
+}
+
+moduleclass = 'bio'
+

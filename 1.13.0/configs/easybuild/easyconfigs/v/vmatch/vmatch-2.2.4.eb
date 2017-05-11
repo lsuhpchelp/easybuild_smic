@@ -1,0 +1,24 @@
+easyblock = "Tarball"
+
+name = 'vmatch'
+version = '2.2.4'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://www.vmatch.de/'
+description = """ Vmatch is a versatile software tool for efficiently solving large scale sequence matching tasks."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['ftp://lscsa.de/pub/lscsa/']
+sources = ['%(name)s-%(version)s-Linux_x86_64-64bit.tar.gz']
+
+sanity_check_paths = {
+    'files': ['vmatch'],
+    'dirs': [],
+}
+
+modextrapaths = {'PATH':''}
+
+moduleclass = 'bio'
+

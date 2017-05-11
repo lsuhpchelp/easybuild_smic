@@ -1,0 +1,24 @@
+name = 'cap3'
+version = '20071221'
+# see VersionDate in caps3 output
+author = 'lyan1'
+requested_by = 'bio'
+
+easyblock = 'PackedBinary'
+
+homepage = 'http://seq.cs.iastate.edu/'
+description = """CAP3 assembly program """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [('http://seq.cs.iastate.edu/CAP3/')]
+sources = ['cap3.linux.x86_64.tar']
+#checksums = [('md5', '0fbb95c3fcbfb2b1afcebc5f7e2b4343')]
+
+sanity_check_paths = {
+    'files': ['cap3','formcon'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+

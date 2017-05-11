@@ -1,0 +1,24 @@
+easyblock = 'ConfigureMake'
+
+name = 'libgtextutils'
+version = '0.6.1'
+author = 'lyan1'
+requested_by = 'bio-depend'
+
+homepage = 'http://hannonlab.cshl.edu/fastx_toolkit/'
+description = """ligtextutils is a dependency of fastx-toolkit and is provided via the same upstream"""
+
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = [SOURCE_TAR_BZ2]
+source_urls = ['http://hannonlab.cshl.edu/fastx_toolkit']
+
+sanity_check_paths = {
+                      'files': ['lib/libgtextutils.so', 'lib/libgtextutils.a'],
+                      'dirs': ['lib/pkgconfig']
+                     }
+
+moduleclass = 'bio'
+

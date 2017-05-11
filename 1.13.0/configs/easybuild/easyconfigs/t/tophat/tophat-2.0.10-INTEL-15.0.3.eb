@@ -1,0 +1,46 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2013 University of Luxembourg/Luxembourg Centre for Systems Biomedicine
+# Authors::   Cedric Laczny <cedric.laczny@uni.lu>, Fotis Georgatos <fotis.georgatos@uni.lu>, Jens Timmerman
+# License::   GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+##
+
+name = 'tophat'
+version = '2.0.10'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://ccb.jhu.edu/software/tophat/index.shtml'
+description = """TopHat is a fast splice junction mapper for RNA-Seq reads."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ['http://ccb.jhu.edu/software/tophat/downloads/']
+
+patches = ['tophat_ictce.patch']
+
+dependencies = [
+    ('boost', '1.58.0'),
+    ('samtools', '0.1.19'),
+    ('python', '2.7.10-anaconda', '',('dummy','dummy')),
+]
+
+osdependencies = [('zlib-devel')]
+
+configopts = '--with-boost=$EBROOTBOOST --with-bam=$EBROOTSAMTOOLS'
+
+sanity_check_paths = {
+    'files': ['bin/tophat'],
+    'dirs': [],
+}
+
+parallel = 1  # not sure for a parallel build
+
+moduleclass = 'bio'

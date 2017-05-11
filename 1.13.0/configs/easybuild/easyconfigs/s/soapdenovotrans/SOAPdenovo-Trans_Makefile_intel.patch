@@ -1,0 +1,20 @@
+--- src/Makefile	2014-04-15 04:37:16.000000000 -0500
++++ src/Makefile	2015-09-03 16:13:07.000000000 -0500
+@@ -1,5 +1,5 @@
+-CC=             gcc
+-CFLAGS=         -O3 -fomit-frame-pointer -static
++CC=             icc
++CFLAGS=         -O3 -xHost
+ #CFLAGS=         -O3 -g -D_DEBUG
+ DFLAGS= 
+ 
+@@ -32,7 +32,7 @@
+ INCLUDES=	-Iinc
+ SUBDIRS=        . 
+ LIBPATH=	
+-LIBS=      	-pthread -lm -lrt -lbam -lz -L./inc
++LIBS=      	-L/usr/lib/x86_64-redhat-linux5E/lib64 -lm -lrt -lpthread -L./inc -lbam ./inc/libz.so /usr/lib64/libc.so
+ EXTRA_FLAGS=
+ 
+ BIT_ERR = 0
+

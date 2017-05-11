@@ -1,0 +1,39 @@
+easyblock = 'MakeCp'
+
+name = 'idba_ud'
+version = '1.1.1'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://i.cs.hku.hk/~alse/hkubrg/projects/idba_ud/'
+description = """ IDBA-UD is a iterative De Bruijn Graph De Novo Assembler for Short Reads
+ Sequencing data with Highly Uneven Sequencing Depth. It is an extension of IDBA algorithm.
+ IDBA-UD also iterates from small k to a large k. In each iteration, short and low-depth
+ contigs are removed iteratively with cutoff threshold from low to high to reduce the errors
+ in low-depth and high-depth regions. Paired-end reads are aligned to contigs and assembled
+ locally to generate some missing k-mers in low-depth regions. With these technologies, IDBA-UD
+ can iterate k value of de Bruijn graph to a very large value with less gaps and less branches
+ to form long contigs in both low-depth and high-depth regions."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+
+source_urls = ['http://hku-idba.googlecode.com/files/']
+sources = ['idba-%(version)s.tar.gz']
+
+preconfigopts = 'CC=icc CXX=icpc'
+
+prebuildopts = './configure && '
+
+# we delete every .o file which is left in bin folder
+buildopts = ' && rm -fr bin/*.o && rm -fr bin/Makefile*'
+
+files_to_copy = ["bin", "script", "README", "ChangeLog", "NEWS"]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in ["idba", "idba_hybrid", "idba_tran",
+                                    "idba_ud", "parallel_blat", "idba_tran_test"]],
+    'dirs': [""],
+}
+
+moduleclass = 'bio'
+

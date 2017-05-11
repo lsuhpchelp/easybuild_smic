@@ -1,0 +1,33 @@
+easyblock = 'ConfigureMake'
+
+name = 'octave'
+version = '3.8.2'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.gnu.org/software/octave/'
+description = """GNU Octave is a high-level interpreted language, primarily intended for numerical computations."""
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+patches = ['Octave-%(version)s_intel.patch']
+
+dependencies = [
+    ('pcre', '8.36'),
+]
+
+osdependencies = ['ncurses','readline']
+
+configopts = '--with-blas="$LIBBLAS"'
+
+sanity_check_paths = {
+    'files': ['bin/octave'],
+    'dirs': []
+}
+
+sanity_check_commands = [('octave', '--eval "1+2"')]
+
+moduleclass = 'math'

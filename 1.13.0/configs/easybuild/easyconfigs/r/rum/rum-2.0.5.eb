@@ -1,0 +1,26 @@
+#easyblock='PerlModule'
+
+name = 'rum'
+version = '2.0.5_06'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://github.com/itmat/rum'
+description = """RUM is an alignment, junction calling, 
+and feature quantification pipeline specifically designed 
+for Illumina RNA-Seq data."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://github.com/itmat/rum/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [
+    ('perl', '5.20.0', '', ('INTEL','15.0.3')),
+    ('samtools','0.1.19','',('INTEL','15.0.3'))
+]
+
+skipsteps = ['test']
+
+moduleclass = 'bio'
+

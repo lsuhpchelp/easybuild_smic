@@ -1,0 +1,33 @@
+easyblock = "PythonPackage"
+
+name = 'dendropy'
+version = '3.12.0'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://pypi.python.org/pypi/DendroPy/'
+description = """A Python library for phylogenetics and phylogenetic computing:
+reading, writing, simulation, processing and manipulation of phylogenetic trees
+(phylogenies) and characters."""
+
+toolchain = {'name': 'GCC', 'version': '4.9.0'}
+
+source_urls = ['https://pypi.python.org/packages/source/D/DendroPy/']
+sources = ['DendroPy-3.12.0.tar.gz']
+
+python = 'python'
+pythonversion = '2.7.10-anaconda'
+#pythonshortversion = ".".join(pythonversion.split(".")[:-1])
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+dependencies = [(python, pythonversion, '',('dummy','dummy'))]
+
+sanity_check_paths = {
+    'files': ['bin/cattrees.py','bin/long_branch_symmdiff.py','bin/sumlabels.py',
+              'bin/sumtrees.py','bin/strict_consensus_merge.py'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+

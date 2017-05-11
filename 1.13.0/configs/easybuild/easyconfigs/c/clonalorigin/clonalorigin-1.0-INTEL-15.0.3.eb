@@ -1,0 +1,32 @@
+# Could do with preconfigopts = './autogen.sh && '
+
+name = 'clonalorigin'
+version = '1.0'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://github.com/xavierdidelot/clonalorigin'
+description = """ClonalOrigin performs a comparative analysis of the sequences of a sample of bacterial genomes in order to reconstruct the recombination events that have taken place in their ancestry."""
+
+
+toolchain = {'name': 'INTEL', 'version': '15.0.3'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/xavierdidelot/ClonalOrigin/archive']
+
+dependencies = [
+                ('gsl', '1.16')
+               ]
+
+sanity_check_paths = {
+                      'files': ['bin/warg', 'bin/makeMauveWargFile.pl'],
+                      'dirs': []
+                     }
+
+configopts = "--with-gsl-prefix=$LHPC_ROOTGSL --with-expat=$LHPC_ROOTEXPAT"
+
+parallel = 1  # make crashes otherwise
+
+moduleclass = 'bio'
+
