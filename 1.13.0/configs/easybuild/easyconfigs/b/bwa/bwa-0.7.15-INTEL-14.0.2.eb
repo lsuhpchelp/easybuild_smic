@@ -1,0 +1,16 @@
+name = 'bwa'
+version = '0.7.15'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://bio-bwa.sourceforge.net/'
+description = """Burrows-Wheeler Aligner (BWA) is an efficient program that aligns
+ relatively short nucleotide sequences against a long reference sequence such as the human genome."""
+
+toolchain = {'name': 'INTEL', 'version': '14.0.2'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = [('http://sourceforge.net/projects/bio-bwa/files/', 'download')]
+
+moduleclass = 'bio'

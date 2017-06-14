@@ -14,7 +14,7 @@
 -#CC = icc
 -#CFLAGS = -fast
 +CC = icc
-+CFLAGS = -fast
++CFLAGS = -O3 -xHost
  # if you have icc, use this.
  
  #CFLAGS =  -O0  -fPIC -pedantic -Wall -std=c99 -g -pg -DMALLOC_CHECK_=3

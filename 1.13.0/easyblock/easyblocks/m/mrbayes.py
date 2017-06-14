@@ -42,7 +42,7 @@ from easybuild.tools.filetools import run_cmd
 from easybuild.tools.modules import get_software_root
 
 
-class EB_MrBayes(ConfigureMake):
+class EB_mrbayes(ConfigureMake):
     """Support for building/installing MrBayes."""
 
     def configure_step(self):
@@ -65,22 +65,22 @@ class EB_MrBayes(ConfigureMake):
             run_cmd(cmd)
 
             # set config opts
-            beagle = get_software_root('beagle-lib')
+            beagle = get_software_root('beagle_lib')
             if beagle:
                 self.cfg.update('configopts', '--with-beagle=%s' % beagle)
             else:
                 beagle = get_software_root('BEAGLE')
                 if beagle:
-                    self.log.deprecated('BEAGLE module as dependency, should be beagle-lib', '2.0')
+                    self.log.deprecated('BEAGLE module as dependency, should be beagle_lib', '2.0')
                     self.cfg.update('configopts', '--with-beagle=%s' % beagle)
                 else:
-                    self.log.error("beagle-lib module not loaded?")
+                    self.log.error("beagle_lib module not loaded?")
 
             if self.toolchain.options.get('usempi', None):
                 self.cfg.update('configopts', '--enable-mpi')
 
             # configure
-            super(EB_MrBayes, self).configure_step()
+            super(EB_mrbayes, self).configure_step()
         else:
 
             # no configure script prior to v3.2
@@ -109,5 +109,5 @@ class EB_MrBayes(ConfigureMake):
                         'dirs': []
                        }
 
-        super(EB_MrBayes, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_mrbayes, self).sanity_check_step(custom_paths=custom_paths)
 

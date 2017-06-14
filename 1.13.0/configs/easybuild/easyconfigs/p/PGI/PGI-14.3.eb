@@ -1,0 +1,16 @@
+easyblock = "Toolchain"
+
+name = 'PGI'
+version = '14.3'
+author = 'lyan1'
+requested_by = 'chem3d. see ticket #1027849'
+
+homepage = 'http://www.pgroup.com/products/pgicdk.htm'
+description = """The PGI CDK includes pre-configured versions of MPI for Ethernet and InfiniBand to enable development, debugging and tuning of high-performance MPI or hybrid MPI/OpenMP applications written in Fortran, C or C++. """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+dependencies = [
+                ('pgi', version),
+               ]
+

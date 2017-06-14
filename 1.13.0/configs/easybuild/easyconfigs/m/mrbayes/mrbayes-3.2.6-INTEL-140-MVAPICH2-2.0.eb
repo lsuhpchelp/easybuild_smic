@@ -1,0 +1,23 @@
+name = 'mrbayes'
+version = '3.2.6'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://mrbayes.csit.fsu.edu'
+description = "MrBayes is a program for the Bayesian estimation of phylogeny."
+
+toolchain = {'name': 'INTEL-140-MVAPICH2', 'version': '2.0'}
+toolchainopts = {'optarch': True, 'usempi': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ["http://downloads.sourceforge.net/project/mrbayes/mrbayes/%(version)s"]
+
+dependencies = [
+    ('beagle_lib', '2.1.2', '', ('INTEL', '14.0.2')),
+#    ('libreadline', '6.3'),
+]
+
+osdependencies = [('readline')]
+
+moduleclass = 'bio'
+
