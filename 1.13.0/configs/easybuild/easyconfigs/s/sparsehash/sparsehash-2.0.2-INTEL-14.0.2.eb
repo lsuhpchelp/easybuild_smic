@@ -15,7 +15,7 @@ toolchain = {'name': 'INTEL', 'version': '14.0.2'}
 toolchainopts = {'pic': True}
 
 sources = [SOURCELOWER_TAR_GZ]
-source_urls = ['https://sparsehash.googlecode.com/files/']
+source_urls = ['https://github.com/sparsehash/sparsehash/archive/']
 
 sanity_check_paths = {
     'files': ['include/google/type_traits.h'],
