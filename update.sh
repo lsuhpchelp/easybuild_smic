@@ -1,7 +1,8 @@
 OPTION="$1 --update -avz"
 
+PREFIX=`dirname $0`
 SRC=/usr/local/packages/easybuild/1.13.0
-DEST=/project/lyan1/projects/easybuild_smic/1.13.0
+DEST=$PREFIX/1.13.0
 
 # Config files
 rsync $OPTION $SRC/configs/* $DEST/configs/
