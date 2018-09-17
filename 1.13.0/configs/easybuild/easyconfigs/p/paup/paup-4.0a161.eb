@@ -1,0 +1,16 @@
+easyblock = 'Binary'
+
+name = 'paup'
+version = '4.0a161'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://paup.phylosolutions.com/'
+description = """PAUP* (Phylogenetic Analysis Using Parsimony *and other methods) is a computational phylogenetics program for inferring evolutionary trees (phylogenies)."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['http://phylosolutions.com/paup-test']
+sources = ['paup4a161_centos64.gz']
+
+modextrapaths = {'PATH': '.'}

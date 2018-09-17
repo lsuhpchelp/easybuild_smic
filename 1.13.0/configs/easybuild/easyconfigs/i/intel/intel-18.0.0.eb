@@ -1,0 +1,29 @@
+easyblock = "Toolchain"
+
+name = 'intel'
+version = '18.0.0'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'https://software.intel.com/en-us/parallel-studio-xe'
+description = """Intel Cluster Toolkit Compiler Edition provides Intel C,C++ and fortran compilers, Intel MPI and Intel MKL"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+intel_root = '/home/compilers/Intel/parallel_studio_xe_2018.0/compilers_and_libraries_2018/linux'
+
+modextravars = {
+         'CPATH': '%s/mkl/include:%s/tbb/include' % (intel_root,intel_root),
+         'INCLUDE': '%s/mkl/include' % intel_root,
+         'INTEL_LICENSE_FILE': '/usr/local/compilers/Intel',
+         'LANGUAGE_TERRITORY': 'en_US',
+         'LD_LIBRARY_PATH': '%s/lib/intel64_lin:%s/mkl/lib/intel64:%s/tbb/lib/intel64_lin/gcc4.4' % (intel_root,intel_root,intel_root),
+         'LIBRARY_PATH': '%s/lib/intel64_lin:%s/mkl/lib/intel64:%s/tbb/lib/intel64_lin/gcc4.4' % (intel_root,intel_root,intel_root),
+         'MANPATH': '%s/man/en_US:%s/man/en_US' % (intel_root,intel_root),
+         'MIC_LD_LIBRARY_PATH': '%s/compiler/lib/mic:%s/mkl/lib/mic' % (intel_root,intel_root),
+         'PATH': '%s/bin/intel64' % intel_root,
+         'MKLROOT': '%s/mkl' % intel_root, 
+         'NLSPATH': '%s/compiler/lib/intel64/locale/en_US:%s/mkl/lib/intel64/locale/en_US' % (intel_root,intel_root)
+}
+
+dontcreateinstalldir = 'True'

@@ -1,0 +1,39 @@
+easyblock = 'ConfigureMake'
+
+name = 'imagemagick'
+version = '7.0.3_1'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.imagemagick.org/'
+description = """ImageMagick is a software suite to create, edit, compose, or convert bitmap images"""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = ['https://launchpad.net/imagemagick/main/%(version)s/+download/']
+checksums = ['95db9b86ed542cae20634358b4924e10']
+
+dependencies = [
+    ('bzip2', '1.0.6'),
+    ('X11', '20160819'),
+    ('Ghostscript', '9.19'),
+    ('JasPer', '1.900.1'),
+    ('libjpeg-turbo', '1.5.0'),
+    ('LibTIFF', '4.0.6'),
+    ('LittleCMS', '2.8'),
+]
+
+builddependencies = [
+    ('pkg-config', '0.29.1'),
+]
+
+configopts = "--with-gslib --with-x"
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['bin', 'etc/%(name)s-%(version_major)s', 'include/%(name)s-%(version_major)s', 'lib', 'share'],
+}
+
+modextravars = {'MAGICK_HOME': '%(installdir)s'}
+

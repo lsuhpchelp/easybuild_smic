@@ -1,0 +1,25 @@
+--- Mothur.source.orig/source/uchime_src/mk.org	2015-10-01 12:19:22.000000000 -0500
++++ Mothur.source/source/uchime_src/mk	2015-10-01 12:21:09.000000000 -0500
+@@ -7,17 +7,17 @@
+ for CPPName in $CPPNames
+ do
+   echo $CPPName >> /dev/tty
+-  g++ $ENV_GCC_OPTS -c -O3 -msse2 -mfpmath=sse -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 -DUCHIMES=1 $CPPName.cpp -o $CPPName.o  >> mk.stdout 2>> tmp.stderr
++  icpc $ENV_GCC_OPTS -c -O3 -D_FILE_OFFSET_BITS=64 -DNDEBUG=1 -DUCHIMES=1 $CPPName.cpp -o $CPPName.o  >> mk.stdout 2>> tmp.stderr
+ 	cat tmp.stderr
+ 	cat tmp.stderr >> mk.stderr
+ 	rm -f tmp.stderr
+ done
+ 
+ LINK_OPTS= 
+-if [ `uname -s` == Linux ] ; then
+-    LINK_OPTS=-static
+-fi
+-g++ $LINK_OPTS $ENV_LINK_OPTS -g -o uchime $ObjNames >> mk.stdout 2>> tmp.stderr
++#if [ `uname -s` == Linux ] ; then
++#    LINK_OPTS=-static
++#fi
++icpc $LINK_OPTS $ENV_LINK_OPTS -g -o uchime $ObjNames >> mk.stdout 2>> tmp.stderr
+ cat tmp.stderr
+ cat tmp.stderr >> mk.stderr
+ rm -f tmp.stderr

@@ -1,0 +1,31 @@
+name = 'boost'
+version = '1.55.0'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.boost.org/'
+description = """Boost provides free peer-reviewed portable C++ source libraries."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+# toolchainopts = {'pic': True, 'usempi': True}
+toolchainopts = {'pic': True}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = ['%%(namelower)s_%s.tar.gz' % '_'.join(version.split('.'))]
+
+patches = ['intellinuxjam_fPIC.patch']
+
+pythonversion = '2.7.14-anaconda'
+#versionsuffix = '-python-%s' % pythonversion
+
+comp = ('dummy','dummy')
+dependencies = [
+    ('python', pythonversion, '', comp),
+]
+
+# also build boost_mpi
+# boost_mpi = True
+
+osdependencies = [('zlib-devel', 'bzip2-devel')]
+
+moduleclass = 'devel'

@@ -1,0 +1,30 @@
+--- core/Makefile    2015-07-21 17:13:18.000000000 -0500
++++ core/Makefile    2015-09-01 14:07:20.000000000 -0500
+@@ -10,13 +10,13 @@
+ # Comment out the above line if your compiler 
+ # does not support TLS (thread-local strage).
+ 
+-CC = gcc
+-CFLAGS = -O3
++#CC = gcc
++#CFLAGS = -O3
+ #CFLAGS = -O3 -fPIC
+ # add -fPIC when building .so files
+ 
+-#CC = icc
+-#CFLAGS = -fast
++CC = icc
++CFLAGS = -O3 -xHost -no-prec-div
+ # if you have icc, use this.
+ 
+ #CFLAGS =  -O0  -fPIC -pedantic -Wall -std=c99 -g -pg -DMALLOC_CHECK_=3
+@@ -27,7 +27,7 @@
+ MYCFLAGS = $(MNO_CYGWIN) $(ENABLE_MULTITHREAD) $(CFLAGS)
+ 
+ ifdef ENABLE_MULTITHREAD
+-LIBS = -lm  -lpthread
++LIBS = -L/usr/lib/x86_64-redhat-linux5E/lib64 -lm  -lpthread
+ else
+ LIBS = -lm
+ endif
+

@@ -1,0 +1,31 @@
+easyblock='ConfigureMake'
+
+name = 'exabayes'
+version = '1.5'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://sco.h-its.org/exelixis/web/software/exabayes/'
+description = """ExaBayes is a software package for Bayesian tree inference. It is
+    particularly suitable for large-scale analyses on computer clusters."""
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = {'usempi': True, 'optarch': True, 'opt': True}
+
+source_urls = ['https://sco.h-its.org/exelixis/resource/download/software']
+sources = [SOURCELOWER_TAR_GZ]
+
+parallel = 8
+
+builddependencies = [
+	('gcc','6.4.0','',True)
+]
+
+#preconfigopts = "CCFLAGS='-gxx-name=g++'"
+configopts = '--enable-mpi --disable-mic'
+
+sanity_check_paths = {
+    'files': ["bin/exabayes"],
+    'dirs': []
+}
+

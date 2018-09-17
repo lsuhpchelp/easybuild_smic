@@ -1,0 +1,28 @@
+name = 'namd'
+version = '2.12'
+versionsuffix = '-mpi'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.ks.uiuc.edu/Research/namd/'
+description = """NAMD is a parallel molecular dynamics code designed for high-performance simulation of
+ large biomolecular systems."""
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = {'pic': True, 'usempi': True, 'opt': True, 'optarch': True}
+
+sources = [{
+    'filename': 'NAMD_%(version)s_Source.tar.gz',
+    'extract_cmd': "tar xfv %s",  # source file is actually not gzipped
+}]
+
+dependencies = [
+#    ('Tcl', '8.6.7'),
+    ('fftw', '3.3.3'),
+]
+
+# /bin/csh is required by 'config' script
+osdependencies = ['tcsh','tcl']
+
+charm_arch = 'mpi-linux-x86_64'
+

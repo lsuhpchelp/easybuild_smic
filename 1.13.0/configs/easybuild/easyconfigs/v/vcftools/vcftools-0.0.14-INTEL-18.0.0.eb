@@ -1,0 +1,29 @@
+easyblock = 'ConfigureMake'
+
+name = 'vcftools'
+version = '0.1.14'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = "https://vcftools.github.io"
+description = """The aim of VCFtools is to provide
+ easily accessible methods for working with complex
+ genetic variation data in the form of VCF files."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+toolchainopts = {'optarch': True}
+
+source_urls = ['https://github.com/%(namelower)s/%(namelower)s/releases/download/v%(version)s/']
+sources = ['%(namelower)s-%(version)s.tar.gz']
+
+dependencies = [
+    ('perl', '5.24.0'),
+]
+
+modextrapaths = {'PERL5LIB': 'lib/perl5/site_perl'}
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in ['vcftools', 'vcf-sort', 'vcf-stats']],
+    'dirs': [],
+}
+

@@ -1,0 +1,36 @@
+name = 'nwchem'
+version = '6.8'
+#versionsuffix = '-%s-Python-%%(pyver)s' % verdate
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.nwchem-sw.org'
+description = """NWChem aims to provide its users with computational chemistry tools that are scalable both in
+ their ability to treat large scientific computational chemistry problems efficiently, and in their use of available
+ parallel computing resources from high-performance parallel supercomputers to conventional workstation clusters.
+ NWChem software can handle: biomolecules, nanostructures, and solid-state; from quantum to classical, and all
+ combinations; Gaussian basis functions or plane-waves; scaling from one to thousands of processors; properties
+ and relativity."""
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = {'i8': True, 'usempi': True}
+
+source_urls = ['https://github.com/nwchemgit/nwchem/releases/download/v6.8-release/']
+sources = ['nwchem-6.8-release.revision-v6.8-47-gdf6c956-srconly.2017-12-14.tar.bz2']
+
+#patches = [
+#    'NWChem_fix-date.patch',
+#    'NWChem-%(version)s-parallelbuild.patch',
+#]
+
+dependencies = [('python', '2.7.14-anaconda','',True)]
+
+# This easyconfig is using the default for armci_network (OPENIB) and
+# thus needs infiniband libraries.
+osdependencies = [
+    ('libibverbs-dev', 'libibverbs-devel', 'rdma-core-devel'),
+    ('libibumad-dev', 'libibumad-devel'),
+]
+
+#modules = 'all python'
+

@@ -1,0 +1,24 @@
+easyblock = "Tarball"
+
+name = 'repet'
+version = '2.5'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://urgi.versailles.inra.fr/Projects/URGI-softwares/REPET'
+description = """ The REPET package ( Flutre et al, 2011 ) integrates 
+bioinformatics programs in order to tackle biological issues at the genomic scale. 
+Its two main pipelines are dedicated to the detection, annotation and analysis of 
+repeats in genomic sequences, specifically designed for transposable elements (TEs). """
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://urgi.versailles.inra.fr/download/repet/']
+sources = ['REPET_linux-x64-%(version)s.tar.gz']
+
+sanity_check_paths = {
+    'files': ['bin/fastlalign', 'bin/refalign'],
+    'dirs': ['bin'],
+}
+
+modextrapaths = {'PATH':'bin'}

@@ -1,0 +1,34 @@
+diff -ru Mothur.source.orig/makefile Mothur.source/makefile
+--- Mothur.source.orig/makefile 2014-04-04 15:41:30.000000000 +0200
++++ Mothur.source/makefile      2014-06-03 20:11:08.822194000 +0200
+@@ -8,11 +8,11 @@
+ # Macros
+ #
+ 
+-USEMPI ?= no
++USEMPI ?= yes
+ 64BIT_VERSION ?= yes
+ USEREADLINE ?= yes
+ USECOMPRESSION ?= no
+-USEBOOST ?= yes
++USEBOOST ?= no
+ MOTHUR_FILES="\"Enter_your_default_path_here\""
+ RELEASE_DATE = "\"7/27/2015\""
+ VERSION = "\"1.36.1\""
+@@ -23,7 +23,7 @@
+ 
+ ifeq  ($(strip $(64BIT_VERSION)),yes)
+     #if you are a mac user use the following line
+-    TARGET_ARCH += -arch x86_64
++    #TARGET_ARCH += -arch x86_64
+ 
+     #if you using cygwin to build Windows the following line
+     #CXX = x86_64-w64-mingw32-g++
+@@ -58,7 +58,7 @@
+ 
+ 
+ ifeq  ($(strip $(USEMPI)),yes)
+-    CXX = mpic++
++    CXX = mpicxx
+     CXXFLAGS += -DUSE_MPI
+ endif

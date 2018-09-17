@@ -1,0 +1,26 @@
+easyblock = 'Binary'
+
+name = 'bbcp'
+version = '12.01.30.00.0'
+#versionsuffix = '-amd64_linux26'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://www.slac.stanford.edu/~abh/bbcp/'
+description = """BBCP is an alternative to Gridftp when transferring large amounts of data,
+ capable of breaking up your transfer into multiple simultaneous transferring streams,
+ thereby transferring data much faster than single-streaming utilities such as SCP and SFTP.
+ See details at http://pcbunn.cithep.caltech.edu/bbcp/using_bbcp.htm
+ or http://www.nics.tennessee.edu/computing-resources/data-transfer/bbcp"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+# fi. http://www.slac.stanford.edu/~abh/bbcp/bin/amd64_linux26/bbcp # VERY poor way of distributing software
+sources = [name]
+source_urls = [homepage + 'bin/amd64_linux26']
+
+sanity_check_paths = {
+    'files': ['bbcp'],
+    'dirs': []
+}
+

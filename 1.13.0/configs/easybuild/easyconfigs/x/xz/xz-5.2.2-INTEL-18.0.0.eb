@@ -1,0 +1,31 @@
+easyblock = 'ConfigureMake'
+
+name = 'xz'
+version = '5.2.2'
+author = 'lyan1'
+requested_by = 'R dependency'
+
+homepage = 'http://tukaani.org/xz/'
+description = "xz: XZ utilities"
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['http://tukaani.org/xz/']
+
+patches = ['XZ-%(version)s_compat-libs.patch']
+
+#builddependencies = [
+#    ('Autotools', '20150215'),
+#    ('gettext', '0.19.8', '', True),
+#]
+
+osdependencies = ['gettext']
+
+# may become useful in non-x86 archs
+# configopts = ' --disable-assembler '
+
+sanity_check_paths = {
+    'files': ["bin/xz", "bin/lzmainfo"],
+    'dirs': []
+}

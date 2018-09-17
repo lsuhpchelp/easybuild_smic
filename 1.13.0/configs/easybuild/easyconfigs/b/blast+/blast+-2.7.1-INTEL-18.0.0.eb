@@ -1,0 +1,64 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>, Kenneth Hoste (UGent)
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'blast+'
+version = '2.7.1'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://blast.ncbi.nlm.nih.gov/'
+description = """Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+toolchainopts = {'cstd': 'c++14','opt': True, 'optarch': True, 'openmp': True}
+
+source_urls = ['http://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/%(version)s/']
+sources = ['ncbi-blast-%(version)s+-src.tar.gz']
+patches = ['BLAST+-2.2.30_ictce-fixes.patch','blast+_2.7.1_intel_openmp.patch']
+
+dependencies = [
+    ('zlib', '1.2.11','',True),
+    ('bzip2', '1.0.6'),
+#    ('PCRE', '8.41'),
+    ('python', '2.7.14-anaconda','',True),
+    ('boost', '1.63.0'),  # more recent Boost version doesn't work?
+#    ('GMP', '6.1.2'),
+    ('lmdb', '0.9.21'),
+]
+
+osdependencies = [
+	'libpng',
+	'libjpeg-turbo',
+	'gmp',
+	'pcre',
+]
+
+builddependencies = [
+	('gcc','6.4.0','',True)
+]
+
+#configopts = "--with-64 --with-z=$LHPC_ROOTZLIB --with-bz2=$LHPC_ROOTBZIP2 --with-pcre=$LHPC_PCRE "
+#configopts += "--with-python=$LHPC_PYTHON --with-boost=$LHPC_ROOTBOOST --with-gmp=$LHPC_GMP --with-png=$LHPC_LIBPNG "
+#configopts += "--with-jpeg=$LHPC_LIBJPEGMINTURBO --with-lmdb=$LHPC_LMDB"
+
+configopts = "--with-64 --with-lmdb=$LHPC_ROOTLMDB --with-openmp --with-z=$LHPC_ROOTZLIB --with-bz2=$LHPC_ROOTBZIP2 --with-boost=$LHPC_ROOTBOOST"
+
+sanity_check_paths = {
+    'files': ['bin/blastn', 'bin/blastp', 'bin/blastx'],
+    'dirs': []
+}
+
+

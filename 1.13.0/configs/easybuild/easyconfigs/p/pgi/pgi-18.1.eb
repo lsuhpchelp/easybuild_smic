@@ -1,0 +1,29 @@
+easyblock = "Toolchain"
+
+name = 'pgi'
+version = '18.1'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'https://www.pgroup.com/'
+description = """PGI compilers for C/C++, Fortran, OpenACC and CUDA Fortran"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+pgi_root = '/usr/local/compilers/pgi/linux86-64/18.1'
+
+modextravars = {
+	'CUDA_NIC_INTEROP': '1',
+	'PGI': '/usr/local/compilers/pgi'
+}
+
+modextrapaths = {
+	'LD_INCLUDE_PATH': 'include',
+	'LD_LIBRARY_PATH': 'lib',
+	'MANPATH': 'man',
+	'PATH': 'bin'
+}
+
+skipsteps = ['postproc']
+
+dontcreateinstalldir = 'True'

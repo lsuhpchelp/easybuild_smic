@@ -1,0 +1,23 @@
+--- ./Chrysalis/Makefile_icpc.orig	2018-04-12 12:23:54.000000000 -0500
++++ ./Chrysalis/Makefile_icpc	2018-04-12 12:24:02.000000000 -0500
+@@ -31,7 +31,7 @@
+   SYS_OPT	+=
+ else
+   ifeq ($(OPTIM),)
+-    SYS_OPT	+= -fast
++    SYS_OPT	+= -O3 -xHost -no-prec-div
+   else
+     SYS_OPT	+= $(OPTIM)
+   endif
+@@ -55,8 +55,8 @@
+ endif
+ 
+ ifeq ($(OPEN_MP),yes)
+-  OMP_FLAGS	= -openmp
+-  OMP_LINK	= -openmp
++  OMP_FLAGS	= -qopenmp
++  OMP_LINK	= -qopenmp
+ endif
+ 
+ ifeq ($(GCOV),yes)
+

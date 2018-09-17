@@ -1,0 +1,27 @@
+easyblock = 'ConfigureMake'
+
+name = 'arpack'
+version = '3.4.0'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://forge.scilab.org/index.php/p/arpack-ng/'
+description = """ARPACK is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems."""
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = {'opt': True, 'optarch': True, 'pic': True, 'usempi': True}
+
+source_urls = ['https://github.com/opencollab/arpack-ng/archive/']
+sources = ['%(version)s.tar.gz']
+
+builddependencies = [('autoconf', '2.69','',True)]
+
+preconfigopts = "sh bootstrap && "
+#configopts = '--with-pic --with-blas="$LIBBLAS" --with-lapack="$LIBLAPACK"'
+configopts = '--with-pic'
+
+sanity_check_paths = {
+    'files': ["lib/libarpack.a", "lib/libarpack.so"],
+    'dirs': []
+}
+

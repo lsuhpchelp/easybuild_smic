@@ -1,0 +1,19 @@
+name = 'jdk'
+version = '1.8.0_161'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://java.com/'
+description = """Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+# download the tar.gz directly from http://www.oracle.com/technetwork/java/javase/downloads/index.html
+(vp, vs) = version.split('_')
+altver = '%su%s' % (vp.split('.')[1], vs)
+#sources = ['jdk-%s-linux-x64.tar.gz' % altver]
+#source_urls = ['http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7']
+source_urls = ['http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808']
+sources = ['%s-%s-linux-x64.tar.gz' % (name,altver)]
+

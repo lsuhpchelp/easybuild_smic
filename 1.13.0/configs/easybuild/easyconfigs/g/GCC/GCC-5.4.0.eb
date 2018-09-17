@@ -1,0 +1,16 @@
+easyblock = "Toolchain"
+
+name = 'GCC'
+version = '5.4.0'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://http://gcc.gnu.org/'
+description = """GNU compiler for C, C++ and Fortran"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+dependencies = [
+                ('gcc', version),
+               ]
+

@@ -1,0 +1,36 @@
+easyblock = 'MakeCp'
+
+name = 'LAMMPS'
+version = "16Mar18"
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://lammps.sandia.gov/'
+description = "LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) is a classical molecular dynamics simulation code designed to run efficiently on parallel computers."
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = { 'usempi': True, 'openmp': True , 'opt': True, 'optarch': True }
+
+source_urls = ['http://lammps.sandia.gov/tars']
+sources = ['lammps-%s.tar.gz' % (version)]
+
+prebuildopts = ' cd ./src && ' 
+prebuildopts += ' make yes-standard yes-user-reaxc yes-user-omp && '
+prebuildopts += ' make no-voronoi no-poems no-meam no-kim no-gpu && '
+prebuildopts += ' make package-update && '
+prebuildopts += ' pushd ../lib/reax && make -f Makefile.gfortran && popd && '
+prebuildopts += ' sed -e \'s/mpicxx/CC -qopenmp/\' ./MAKE/Makefile.mpi > ./MAKE/Makefile.omp && '
+prebuildopts += ' sed -i -e \'s/mpicxx/CC/\' ./MAKE/Makefile.mpi && '
+buildopts = [ ' mpi ', ' omp ' ]
+
+builddependencies = [
+    ('fftw','3.3.3'),
+    ('python', '2.7.14-anaconda','',('dummy','dummy')),
+]
+
+files_to_copy = [(['src/lmp*'], "bin")]
+
+sanity_check_paths = {
+    'files': ['bin/lmp_mpi','bin/lmp_omp'],
+    'dirs': [],
+}

@@ -1,0 +1,63 @@
+name = 'root'
+version = '6.10.08'
+author = 'lyan1'
+requested_by = 'essentail'
+
+homepage = 'http://root.cern.ch/drupal/'
+description = """The ROOT system provides a set of OO frameworks with all the functionality
+    needed to handle and analyze large amounts of data in a very efficient way."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://root.cern.ch/download/']
+sources = ['%(namelower)s_v%(version)s.source.tar.gz']
+patches = [
+    'configure_FftwFromMkl_28.patch',
+    'ROOT-v5_recent-ifort.patch',
+    'ROOT-v5.34.26_libX.patch',
+]
+
+builddependencies = [
+    ('cmake', '3.7.2', '', ('INTEL','18.0.0')),
+#    ('pkg-config', '0.29.2'),
+]
+dependencies = [
+    ('gsl', '2.4', '', ('INTEL','18.0.0')),
+#    ('libxml2', '2.9.4'),
+    ('pcre', '8.36'),
+##    ('CFITSIO', '3.42'),
+#    ('freetype', '2.8'),
+    ('python', '2.7.14-anaconda','',('dummy','dummy')),
+    ('zlib', '1.2.11','',('dummy','dummy')),
+#    ('X11', '20171023'),
+#    ('Mesa', '17.2.4'),
+#    ('libGLU', '9.0.0'),
+##    ('GL2PS', '1.4.0'),
+    ('fftw', '3.3.3','',('INTEL-180-MVAPICH2','2.2')),
+#    ('SQLite', '3.20.1'),
+#    ('XZ', '5.2.3'),
+#    ('libpng', '1.6.32'),
+]
+
+osdependencies = [
+	'libxml2',
+	'pcre',
+	'freetype',
+	'sqlite',
+	'libpng',
+	'xz'
+]
+
+# disable some components
+configopts = "--disable-xrootd --disable-mysql --disable-krb5 --disable-odbc --disable-oracle --disable-pgsql --disable-qt --disable-x11 --disable-unuran"
+
+arch = 'linuxx8664icc'
+
+# make sure some components are enabled
+configopts += "--enable-table --enable-explicitlink --enable-minuit2 --enable-roofit "
+
+configopts += "--enable-cxx17"
+
+parallel = 1
+

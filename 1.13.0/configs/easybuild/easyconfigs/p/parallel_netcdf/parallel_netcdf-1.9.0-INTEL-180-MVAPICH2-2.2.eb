@@ -1,0 +1,22 @@
+name = 'parallel_netcdf'
+version = '1.9.0'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'https://trac.mcs.anl.gov/projects/parallel-netcdf'
+description = """PnetCDF is a high-performance parallel I/O library for accessing files in format compatibility with Unidata's NetCDF, specifically the formats of CDF-1, 2, and 5."""
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+toolchainopts = {'pic': True, 'usempi': True, 'opt': True}
+
+source_urls = [
+    'http://cucis.ece.northwestern.edu/projects/PnetCDF/Release/'
+]
+sources = ['parallel-netcdf-%(version)s.tar.gz']
+
+#buildopts = 'CXXFLAGS="$CXXFLAGS -DMPICH_IGNORE_CXX_SEEK"'
+
+dependencies = [
+	('netcdf','4.4.1.1','',('INTEL-180-MVAPICH2','2.2'))
+]
+

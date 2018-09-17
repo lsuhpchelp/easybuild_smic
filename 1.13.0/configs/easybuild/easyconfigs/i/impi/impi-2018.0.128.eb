@@ -1,0 +1,33 @@
+easyblock = "Toolchain"
+
+name = 'impi'
+version = '2018.0.128'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'https://software.intel.com/en-us/parallel-studio-xe'
+description = """Intel MPI"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+impi_root = '/home/compilers/Intel/parallel_studio_xe_2018.0/impi/2018.0.128/intel64'
+
+dependencies = [
+                ('INTEL', '18.0.0'),
+               ]
+
+modextravars = {
+	'I_MPI_ROOT': '/home/compilers/Intel/parallel_studio_xe_2018.0/impi'
+}
+
+modextrapaths = {
+        'LD_LIBRARY_PATH': 'lib',
+        'LIBRARY_PATH': 'lib',
+        'PATH': 'bin',
+        'CLASSPATH': 'lib/mpi.jar',
+        'LD_INCLUDE_PATH': 'include'
+}
+
+skipsteps = ['postproc']
+
+dontcreateinstalldir = True

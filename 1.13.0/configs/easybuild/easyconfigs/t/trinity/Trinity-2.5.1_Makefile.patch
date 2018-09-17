@@ -1,0 +1,21 @@
+--- ./Makefile.orig	2018-04-12 12:16:24.000000000 -0500
++++ ./Makefile	2018-04-12 12:16:45.000000000 -0500
+@@ -7,7 +7,7 @@
+ #
+ 
+ ifeq ($(TRINITY_COMPILER),intel)
+- INCHWORM_CONFIGURE_FLAGS = CXX=icpc CXXFLAGS="-fast"
++ INCHWORM_CONFIGURE_FLAGS = CXX=icpc CXXFLAGS="-xHost -O3 -no-prec-div"
+  CHRYSALIS_MAKE_FLAGS = COMPILER=icpc
+ else
+  override TRINITY_COMPILER=gnu
+@@ -27,7 +27,7 @@
+                 && sh ./configure --prefix=`pwd` $(INCHWORM_CONFIGURE_FLAGS) && $(MAKE) install
+ 
+ chrysalis_target:
+-	cd Chrysalis && $(MAKE) UNSUPPORTED=yes $(CHRYSALIS_MAKE_FLAGS)
++	cd Chrysalis && $(MAKE) UNSUPPORTED=yes DEBUG=no $(CHRYSALIS_MAKE_FLAGS)
+ 
+ 
+ trinity_essentials:
+

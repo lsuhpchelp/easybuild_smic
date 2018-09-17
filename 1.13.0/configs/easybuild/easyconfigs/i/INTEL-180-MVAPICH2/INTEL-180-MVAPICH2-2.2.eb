@@ -1,0 +1,22 @@
+easyblock = "Toolchain"
+
+name = 'INTEL-180-MVAPICH2'
+version = '2.2'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://software.intel.com/en-us/intel-cluster-toolkit-compiler/'
+description = """Intel Cluster Toolkit Compiler Edition provides Intel C/C++ and Fortran compilers and MPICH."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+compver = '18.0.0'
+comp = ('INTEL',compver)
+mpi = 'mvapich2'
+mpiver = '2.2'
+
+dependencies = [
+    ('intel', compver),
+    (mpi, mpiver, '', comp),
+]
+

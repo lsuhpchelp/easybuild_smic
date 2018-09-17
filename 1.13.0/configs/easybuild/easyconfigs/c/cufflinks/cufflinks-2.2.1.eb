@@ -1,0 +1,33 @@
+name = 'cufflinks'
+version = '2.2.1'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://cole-trapnell-lab.github.io/cufflinks/'
+description = """Transcript assembly, differential expression, and differential regulation for RNA-Seq"""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+toolchainopts = {'optarch': True, 'pic': True, 'opt': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ['http://cole-trapnell-lab.github.io/cufflinks/assets/downloads/']
+
+dependencies = [
+    # issues with boost > 1.55, see https://github.com/cole-trapnell-lab/cufflinks/issues/3
+    ('boost', '1.63.0'),
+    ('samtools', '0.1.19'),
+    ('eigen', '3.2.3'),
+]
+
+osdependencies = [('zlib')]
+
+configopts = '--enable-intel64 --with-boost=$LHPC_ROOTBOOST --with-bam-libdir=${LHPC_ROOTSAMTOOLS}/lib'
+preconfigopts = 'CPPFLAGS=-I$LHPC_ROOTEIGEN/include'
+
+sanity_check_paths = {
+    'files': ['bin/cufflinks'],
+    'dirs': []
+}
+
+moduleclass = 'bio'
+

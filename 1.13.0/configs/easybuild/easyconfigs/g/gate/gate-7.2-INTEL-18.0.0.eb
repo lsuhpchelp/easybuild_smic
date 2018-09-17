@@ -1,0 +1,31 @@
+name = 'gate'
+version = '7.2'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.opengatecollaboration.org/'
+description = """GATE is an advanced opensource software developed by the international OpenGATE collaboration and
+ dedicated to the numerical simulations in medical imaging. It currently supports simulations of Emission Tomography
+ (Positron Emission Tomography - PET and Single Photon Emission Computed Tomography - SPECT), and Computed Tomography"""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+
+sources = [('%(namelower)s_v%(version)s.tar.gz', "tar xfvz %s")]
+source_urls = ['http://www.opengatecollaboration.org/sites/default/files/']
+
+patches = [
+    'GATE-7.0_Makefile-prefix.patch',
+    'GATE-7.0_unistdh.patch',
+]
+
+dependencies = [
+    ('geant4', '10.02.p01'), 
+    ('clhep', '2.3.1.1', '', ('GCC','6.4.0')),
+    ('root', '6.10.08', '',('GCC','6.4.0')), 
+]
+builddependencies = [
+    ('cmake', '3.7.2'),
+    ('gcc','6.4.0','',True),
+]
+
+

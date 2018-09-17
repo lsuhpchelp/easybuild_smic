@@ -1,0 +1,29 @@
+name = 'geant4'
+version = '10.4.2'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://geant4.cern.ch/'
+description = """Geant4 is a toolkit for the simulation of the passage of particles through matter.
+ Its areas of application include high energy, nuclear and accelerator physics, 
+ as well as studies in medical and space science."""
+
+toolchain = {'name': 'GCC', 'version': '6.4.0'}
+
+#source_urls = ['http://geant4.cern.ch/support/source']
+source_urls = ['https://github.com/Geant4/geant4/archive']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [
+    ('expat', '2.2.0','',('INTEL','18.0.0')),
+    # recommended CLHEP version, see https://geant4.web.cern.ch/geant4/support/ReleaseNotes4.10.2.html#2.
+    ('clhep', '2.3.1.1','',('GCC','6.4.0')),
+]
+
+#osdependencies = [('expat')]
+
+builddependencies = [('cmake', '3.7.2','',('INTEL','18.0.0'))]
+
+configopts = "-DEXPAT_LIBRARY=$LHPC_ROOTEXPAT/lib/libexpat.so -DEXPAT_INCLUDE_DIR=$LHPC_ROOTEXPAT/include"
+configopts += " -DGEANT4_INSTALL_DATA=OFF"
+

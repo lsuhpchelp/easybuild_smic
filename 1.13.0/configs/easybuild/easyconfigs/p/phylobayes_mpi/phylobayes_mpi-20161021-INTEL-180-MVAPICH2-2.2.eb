@@ -1,0 +1,31 @@
+easyblock = 'MakeCp'
+
+name = 'phylobayes_mpi'
+version = '20161021'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://github.com/bayesiancook/pbmpi'
+description = "A Bayesian software for phylogenetic reconstruction using mixture models"
+
+toolchain = {'name': 'INTEL-180-MVAPICH2', 'version': '2.2'}
+
+commit = 'e4ea1ca'
+source_urls = ['https://github.com/bayesiancook/pbmpi/archive/']
+sources = ['%s.tar.gz' % commit]
+
+start_dir = 'sources'
+
+# get rid of included binaries to ensur they're recompiled
+prebuildopts = "rm -f data/* &&"
+
+buildopts = 'CC="$MPICXX" CPPFLAGS="$CXXFLAGS -c" LDFLAGS="$CXXFLAGS"'
+
+files_to_copy = [(['data/*'], 'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/bpcomp', 'bin/cvrep', 'bin/pb_mpi', 'bin/readpb_mpi', 'bin/tracecomp'],
+    'dirs': [],
+}
+
+

@@ -1,0 +1,70 @@
+name = 'r'
+version = '3.4.3'
+author = 'lyan1'
+requested_by = 'essential'
+
+homepage = 'http://www.r-project.org/'
+description = """R is a free software environment for statistical computing and graphics."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+
+sources = ['R-3.4.3.tar.gz']
+source_urls = ['http://cran.us.r-project.org/src/base/R-%(version_major)s']
+
+preconfigopts = 'BLAS_LIBS="$LIBBLAS" LAPACK_LIBS="$LIBLAPACK" '
+configopts = "--with-lapack --with-blas --with-pic --enable-threads --with-x=no --enable-R-shlib"
+# some recommended packages may fail in a parallel build (e.g. Matrix), and we're installing them anyway below
+configopts += " --with-recommended-packages=no"
+
+dependencies = [
+     ('zlib','1.2.11','',('dummy','dummy')),
+     ('bzip2','1.0.6','',('INTEL','18.0.0')),
+     ('jdk','1.8.0_161','',('dummy','dummy')),
+     ('xz','5.2.2'),
+     ('pcre','8.36'),
+#    ('libreadline', '6.3'),
+#    ('ncurses', '5.9'),
+#    ('libpng', '1.6.17'),  # for plotting in R
+#    ('libjpeg-turbo', '1.4.1'),  # for plottting in R
+#    ('Java', '1.8.0_45', '', True),  # Java bindings are built if Java is found, might as well provide it
+#    ('Tcl', '8.6.4'),  # for tcltk
+#    ('Tk', '8.6.4', '-no-X11'),  # for tcltk
+     ('curl', '7.49.1'),  # for RCurl
+#    ('libxml2', '2.9.2'),  # for XML
+]
+
+osdependencies = [
+        ('readline-devel','ncurses-devel','libpng-devel','libjpeg-turbo','tcl','tk','curl','libxml2')
+]
+
+name_tmpl = '%(name)s_%(version)s.tar.gz'
+ext_options = {
+    'source_urls': [
+        'http://cran.r-project.org/src/contrib/Archive/%(name)s',  # package archive
+        'http://cran.r-project.org/src/contrib/',  # current version of packages
+        'http://cran.freestatistics.org/src/contrib',  # mirror alternative for current packages
+    ],
+    'source_tmpl': name_tmpl,
+}
+
+# !! order of packages is important !!
+# packages updated on January 8th 2015
+exts_list = [
+    # default libraries, only here to sanity check their presence
+    'base',
+    'datasets',
+    'graphics',
+    'grDevices',
+    'grid',
+    'methods',
+    'splines',
+    'stats',
+    'stats4',
+    'tools',
+    'utils',
+    # non-standard libraries, should be specified with fixed versions!
+#    'ggplot2',
+    'parallel',
+]
+
+moduleclass = 'lang'

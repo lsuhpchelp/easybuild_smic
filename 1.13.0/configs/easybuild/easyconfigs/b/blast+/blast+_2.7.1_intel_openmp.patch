@@ -1,0 +1,12 @@
+--- ./c++/src/build-system/configure.orig	2018-04-16 14:59:12.000000000 -0500
++++ ./c++/src/build-system/configure	2018-04-16 14:59:20.000000000 -0500
+@@ -8118,7 +8118,7 @@
+          fi
+          ;;
+       ICC )
+-         : ${OPENMP_FLAGS=-openmp}
++         : ${OPENMP_FLAGS=-qopenmp}
+          ;;
+       WorkShop* )
+          : ${OPENMP_FLAGS=-xopenmp=parallel}
+

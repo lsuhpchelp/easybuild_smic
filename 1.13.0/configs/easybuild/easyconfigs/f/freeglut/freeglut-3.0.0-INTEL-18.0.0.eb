@@ -1,0 +1,37 @@
+easyblock = 'CMakeMake'
+
+name = 'freeglut'
+version = '3.0.0'
+author = 'lyan1'
+requested_by = 'core'
+
+homepage = 'http://freeglut.sourceforge.net/'
+description = "freeglut is a completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library."
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+
+source_urls = ['https://github.com/dcnieho/FreeGLUT/archive']
+sources = ['FG_3_0_0.tar.gz']
+
+builddependencies = [('cmake', '3.7.2')]
+
+#dependencies = [
+#    ('X11', '20171023'),
+#    ('Mesa', '17.2.4'),
+#    ('libGLU', '9.0.0'),
+#]
+
+#configopts = ' -DX11_X11_LIB="$EBROOTX11/lib/libX11.so" '
+#configopts += ' -DX11_X11_INCLUDE_PATH="$EBROOTX11/include/X11" '
+#configopts += ' -DX11_Xext_LIB="$EBROOTX11/lib/libXext.so" '
+#configopts += ' -DX11_Xrandr_LIB="$EBROOTX11/lib/libXrandr.so" '
+#configopts += ' -DX11_Xrandr_INCLUDE_PATH="$EBROOTX11/include/X11/extensions/" '
+#configopts += ' -DX11_Xi_LIB="$EBROOTX11/lib/libXrandr.so" '
+#configopts += ' -DX11_Xi_INCLUDE_PATH="$EBROOTX11/include/X11/extensions/" '
+
+sanity_check_paths = {
+    'files': [('lib/libglut.a', 'lib64/libglut.a'), ('lib/libglut.%s' % SHLIB_EXT, 'lib64/libglut.%s' % SHLIB_EXT)],
+    'dirs': ['include/GL'],
+}
+
+moduleclass = 'lib'

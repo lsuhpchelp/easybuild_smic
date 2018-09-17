@@ -1,0 +1,42 @@
+easyblock = 'ConfigureMake'
+
+name = 'pcre'
+version = '8.41'
+author = 'lyan1'
+requested_by = 'dependencies'
+
+homepage = 'http://www.pcre.org/'
+
+description = """
+ The PCRE library is a set of functions that implement regular expression
+ pattern matching using the same syntax and semantics as Perl 5.
+"""
+
+toolchain = {'name': 'GCC', 'version': '6.3.0'}
+toolchainopts = {'pic': True}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+#builddependencies = [
+#    ('binutils', '2.27'),
+#]
+
+dependencies = [
+    ('bzip2', '1.0.6', '', ('INTEL','18.0.0')),
+    ('zlib', '1.2.11', '', True),
+]
+
+configopts = """\
+    --enable-utf\
+    --enable-unicode-properties\
+    --enable-pcre16\
+    --enable-pcre32\
+"""
+
+sanity_check_paths = {
+    'files': ['bin/pcre-config', 'include/pcre.h',
+              'share/man/man3/pcre.3', 'lib/libpcre32.%s' % SHLIB_EXT],
+    'dirs': ['lib/pkgconfig', 'share/doc/pcre/html', 'share/man/man1'],
+}
+

@@ -1,0 +1,27 @@
+easyblock = "Tarball"
+
+name = 'hisat2'
+version = '2.1.0'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'https://ccb.jhu.edu/software/hisat2/index.shtml'
+description = """HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads
+ (both DNA and RNA) against the general human population (as well as against a single reference genome)."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['ftp://ftp.ccb.jhu.edu/pub/infphilo/%(namelower)s/downloads/']
+sources = ['%(namelower)s-%(version)s-Linux_x86_64.zip']
+
+dependencies = [
+	('python','2.7.14-anaconda')
+]
+
+sanity_check_paths = {
+    'files': ['hisat2-inspect'],
+    'dirs': [],
+}
+
+modextrapaths = {'PATH':'.'}
+
