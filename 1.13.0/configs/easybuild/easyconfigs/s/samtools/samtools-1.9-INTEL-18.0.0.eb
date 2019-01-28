@@ -1,0 +1,41 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2013 University of Luxembourg/Luxembourg Centre for Systems Biomedicine
+# Authors::   Cedric Laczny <cedric.laczny@uni.lu>, Fotis Georgatos <fotis.georgatos@uni.lu>
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+##
+
+name = 'samtools'
+version = '1.9'
+author = 'lyan1'
+requested_by = 'bio'
+
+homepage = 'http://samtools.sourceforge.net/'
+description = """ SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format."""
+
+toolchain = {'name': 'INTEL', 'version': '18.0.0'}
+toolchainopts = {'optarch': True, 'pic': True, 'opt': True}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['https://github.com/%(namelower)s/%(namelower)s/releases/download/%(version)s']
+#https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
+
+#patches = ['SAMtools-1.1_Makefile.patch']
+
+dependencies = [
+     ('xz','5.2.2'),
+     ('curl', '7.49.1')  # for RCurl
+]
+
+maxparallel = 4
+
+osdependencies = [('ncurses-devel','zlib-devel')]
+
+skipsteps = ['sanity_check','sanity']
+
