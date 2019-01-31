@@ -14,4 +14,4 @@ rsync $OPTION $SRC/etc/* $DEST/etc/
 rsync $OPTION --include '*.py' --exclude '*.pyc'  $SRC/lib/python2.6/site-packages/easybuild_framework-1.13.0-py2.6.egg/easybuild/* $DEST/easybuild/
 
 # Easyblock files
-rsync $OPTION --include '*.py' --exclude '*.pyc' $SRC/lib/python2.6/site-packages/easybuild_easyblocks-1.13.0-py2.6.egg/easybuild/* $DEST/easyblock/
+rsync $OPTION --include '*.py' --exclude '*.pyc' $SRC/lib/python2.6/site-packages/easybuild_easyblocks-1.13.0-py2.6.egg/easybuild/easyblocks/* $DEST/easyblock/
