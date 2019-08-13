@@ -54,7 +54,8 @@ class EB_netcdf(CMakeMake):
             if self.toolchain.options['pic']:
                 self.cfg.update('configopts', '--with-pic')
 
-            tup = (os.getenv('FFLAGS'), os.getenv('MPICC'), os.getenv('F90'))
+#            tup = (os.getenv('FFLAGS'), os.getenv('MPICC'), os.getenv('F90'))
+            tup = (os.getenv('FFLAGS'), os.getenv('CC'), os.getenv('F90'))
             self.cfg.update('configopts', 'FCFLAGS="%s" CC="%s" FC="%s"' % tup)
 
             # add -DgFortran to CPPFLAGS when building with GCC
@@ -88,7 +89,7 @@ class EB_netcdf(CMakeMake):
         custom_paths = {
                         'files': ["bin/nc%s" % x for x in ["-config", "copy", "dump",
                                                           "gen", "gen3"]] +
-                                 ["lib/%s" % x for x in libs] +
+#                                 ["lib/%s" % x for x in libs] +
                                  ["include/%s" % x for x in incs],
                         'dirs': []
                        }

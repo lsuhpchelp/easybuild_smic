@@ -25,7 +25,7 @@ from easybuild.tools.filetools import patch_perl_script_autoflush, run_cmd, run_
 from distutils.version import LooseVersion
 
 
-class EB_CUDA(Binary):
+class EB_cuda(Binary):
     """
     Support for installing CUDA.
     """
@@ -81,18 +81,17 @@ class EB_CUDA(Binary):
 
         custom_paths = {
             'files': ["bin/%s" % x for x in ["fatbinary", "nvcc", "nvlink", "ptxas"]] +
-                     ["%s/lib%s.so" % (x, y) for x in ["lib", "lib64"] for y in ["cublas", "cudart", "cufft",
-                                                                                 "curand", "cusparse"]] +
-                     ["open64/bin/nvopencc"],
+                     ["%s/lib%s.so" % (x, y) for x in ["lib64"] for y in ["cublas", "cudart", "cufft",
+                                                                                 "curand", "cusparse"]],
             'dirs': ["include"],
         }
 
-        super(EB_CUDA, self).sanity_check_step(custom_paths=custom_paths)
+        super(EB_cuda, self).sanity_check_step(custom_paths=custom_paths)
 
     def make_module_req_guess(self):
         """Specify CUDA custom values for PATH etc."""
 
-        guesses = super(EB_CUDA, self).make_module_req_guess()
+        guesses = super(EB_cuda, self).make_module_req_guess()
 
         guesses.update({
                         'PATH': ['open64/bin', 'bin'],

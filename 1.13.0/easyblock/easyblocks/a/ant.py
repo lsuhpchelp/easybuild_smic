@@ -50,18 +50,18 @@ class EB_ant(EasyBlock):
     def install_step(self):
         """Custom install procedure for ant."""
 
-        junit_root = get_software_root('JUnit')
-        if not junit_root:
-            self.log.error("JUnit module not loaded!")
+#        junit_root = get_software_root('JUnit')
+#        if not junit_root:
+#            self.log.error("JUnit module not loaded!")
 
-        junit_ver = get_software_version('JUnit')
+#        junit_ver = get_software_version('JUnit')
 
         # copy JUnit jar to where it's expected
-        try:
-            shutil.copy(os.path.join(junit_root, 'junit-%s.jar' % junit_ver),
-                        os.path.join(os.getcwd(), "lib", "optional"))
-        except OSError, err:
-            self.log.error("Failed to copy JUnit jar: %s" % err)
+#        try:
+#            shutil.copy(os.path.join(junit_root, 'junit-%s.jar' % junit_ver),
+#                        os.path.join(os.getcwd(), "lib", "optional"))
+#        except OSError, err:
+#            self.log.error("Failed to copy JUnit jar: %s" % err)
 
         cmd = "sh build.sh -Ddist.dir=%s dist" % self.installdir
 

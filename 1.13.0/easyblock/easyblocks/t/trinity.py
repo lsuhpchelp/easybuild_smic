@@ -226,7 +226,8 @@ class EB_Trinity(EasyBlock):
     def install_step(self):
         """Custom install procedure for Trinity."""
 
-        if LooseVersion(self.version) < LooseVersion('2012-10-05'):
+#        if LooseVersion(self.version) < LooseVersion('2012-10-05'):
+	if (False):
             self.inchworm()
             self.chrysalis()
             self.kmer()

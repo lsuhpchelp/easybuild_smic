@@ -58,12 +58,17 @@ class PerlModule(ExtensionEasyBlock, ConfigureMake):
         # Perl modules have two possible installation procedures: using Makefile.PL and Build.PL
         # configure, build, test, install
         if os.path.exists('Makefile.PL'):
+# Le Yan: 
+# Installation crashes complaining about PREFIX and INSTALL_BASE being set at same time.
+# Comment out the PREFIX and prefix here.
             run_cmd('perl Makefile.PL PREFIX=%s' % self.installdir)
+#            run_cmd('perl Makefile.PL INSTALL_BASE=%s' % self.installdir)
             ConfigureMake.build_step(self)
             ConfigureMake.test_step(self)
             ConfigureMake.install_step(self)
         elif os.path.exists('Build.PL'):
             run_cmd('perl Build.PL --prefix %s' % self.installdir)
+#            run_cmd('perl Build.PL')
             run_cmd('perl Build build')
             run_cmd('perl Build test')
             run_cmd('perl Build install')

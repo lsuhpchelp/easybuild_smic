@@ -65,7 +65,7 @@ class CMakeMake(ConfigureMake):
 
         default_srcdir = '.'
         if self.cfg.get('separate_build_dir', False):
-            objdir = 'easybuild_obj'
+            objdir = os.path.join(self.builddir, 'easybuild_obj')
             try:
                 os.mkdir(objdir)
                 os.chdir(objdir)

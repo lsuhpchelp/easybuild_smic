@@ -57,7 +57,7 @@ class EB_bowtie(ConfigureMake):
         srcfile = None
         try:
             os.makedirs(destdir)
-            for filename in ['bowtie-build', 'bowtie', 'bowtie-inspect']:
+            for filename in ['bowtie-build', 'bowtie-build-l', 'bowtie-build-s', 'bowtie', 'bowtie-align-l','bowtie-align-s','bowtie-inspect', 'bowtie-inspect-s', 'bowtie-inspect-l']:
                 srcfile = os.path.join(srcdir, filename)
                 shutil.copy2(srcfile, destdir)
         except (IOError, OSError), err:
