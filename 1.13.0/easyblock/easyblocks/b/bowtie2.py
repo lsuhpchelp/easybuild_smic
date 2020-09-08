@@ -45,7 +45,7 @@ class EB_bowtie2(ConfigureMake):
         srcfile = None
         try:
             os.makedirs(destdir)
-            for filename in ["bowtie2", "bowtie2-align", "bowtie2-build", "bowtie2-inspect"]:
+            for filename in ['bowtie2-build', 'bowtie2-build-l', 'bowtie2-build-s', 'bowtie2', 'bowtie2-align-l','bowtie2-align-s','bowtie2-inspect', 'bowtie2-inspect-s', 'bowtie2-inspect-l']:
                 srcfile = os.path.join(srcdir, filename)
                 shutil.copy2(srcfile, destdir)
         except OSError, err:
@@ -55,7 +55,7 @@ class EB_bowtie2(ConfigureMake):
         """Custom sanity check for Bowtie2."""
 
         custom_paths = {
-                        'files': ['bin/bowtie2', 'bin/bowtie2-align', 'bin/bowtie2-build', 'bin/bowtie2-inspect' ],
+                        'files': ['bin/bowtie2', 'bin/bowtie2-align-l', 'bin/bowtie2-build', 'bin/bowtie2-inspect' ],
                         'dirs': ['.']
                        }
 

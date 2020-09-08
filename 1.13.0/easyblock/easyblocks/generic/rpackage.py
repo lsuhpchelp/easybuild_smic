@@ -87,10 +87,11 @@ class RPackage(ExtensionEasyBlock):
             confargsstr = ", configure.args=%s" % confargs
 
         r_cmd = """
-        options(repos=c(CRAN="http://www.freestatistics.org/cran"))
+#        options(repos=c(CRAN="http://www.freestatistics.org/cran"))
+	options(repos=c(CRAN="https://cloud.r-project.org"))
         %s
         %s
-        install.packages("%s", dependencies = FALSE %s%s)
+        install.packages("%s" %s%s)
         """ % (confvarslist, confargslist, self.name, confvarsstr, confargsstr)
         cmd = "R -q --no-save"
 

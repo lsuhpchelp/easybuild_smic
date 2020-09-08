@@ -30,7 +30,7 @@ EasyBlock for installing Java, implemented as an easyblock
 from easybuild.easyblocks.generic.packedbinary import PackedBinary
 
 
-class EB_Java(PackedBinary):
+class EB_jdk(PackedBinary):
     """Support for installing Java as a packed binary file (.tar.gz)
     Use the PackedBinary easyblock and set some extra paths.
     """
